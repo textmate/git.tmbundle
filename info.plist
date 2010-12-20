@@ -2,14 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>contactName</key>
-	<string>James Conroy-Finn</string>
 	<key>deleted</key>
 	<array>
 		<string>9CAC009F-9536-4FB3-96E5-84813C4A71F8</string>
 	</array>
-	<key>description</key>
-	<string>Distributed version control used by Linux kernel developers.</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>items</key>
@@ -110,8 +106,7 @@
 		<string>E56D4990-B615-4788-A46C-5D0CDE750D56</string>
 		<string>E9180CC9-BA7D-4271-A0A4-0263D8A71F46</string>
 		<string>BFE83C06-8508-44BE-A975-95A57BF619A7</string>
-		<string>4A6D245C-A10B-4CC0-9E04-E7F21CA8ECA6</string>
-		<string>90B80971-9399-4358-88E2-2E32AD9FA14A</string>
+		<string>7F1CC209-5F6D-486A-8180-09FA282381A1</string>
 		<string>F0EFAC75-4357-45BD-AB08-682DAF8C6FBF</string>
 		<string>1E1882B3-9578-427F-9EF8-3C56EF407F13</string>
 		<string>3E646038-6F79-46BE-96A3-9802E7011162</string>
@@ -136,6 +131,7 @@
 		<string>1C12DE42-78A9-4DCA-BB55-2B8E6328C72D</string>
 		<string>0DBC221A-B726-4367-A5E1-04AB999F8CC2</string>
 		<string>E0901B2E-8953-4A2F-A872-8DBE1A047370</string>
+		<string>683BF855-9BC9-47A6-89DD-7C2192E62FD7</string>
 	</array>
 	<key>uuid</key>
 	<string>EADD4718-EE11-4ABF-A7E6-13351FB3799D</string>
