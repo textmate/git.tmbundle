@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+def escape(choice)
+  choice.gsub(/[,|\\]/, '\\\\\0')
+end
+
+choices = %x{ "${TM_GIT:-git}" log --pretty=tformat:'%s' -n15 }.split(/\n/)
+choices.reject! { |choice| choice =~ /^(fixup|squash)\b/ }
+choices.map! { |choice| escape choice }
+
+STDOUT &lt;&lt; "fixup! ${1|#{choices.join ','}|}"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>Fixup!</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>snippet</string>
+	<key>outputLocation</key>
+	<string>atCaret</string>
+	<key>scope</key>
+	<string>text.git-commit</string>
+	<key>tabTrigger</key>
+	<string>fix</string>
+	<key>uuid</key>
+	<string>11CB0218-E38D-4ACE-9504-77BB3A224C15</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
