@@ -39,6 +39,18 @@
 			<string>^((.{0,50}\s*)|(.{51,65}\s*)|(.+\s*))$</string>
 			<key>beginCaptures</key>
 			<dict>
+				<key>1</key>
+				<dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\G(fixup|squash)!</string>
+							<key>name</key>
+							<string>keyword.other.$1.git-commit</string>
+						</dict>
+					</array>
+				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
