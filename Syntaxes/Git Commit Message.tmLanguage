@@ -38,9 +38,9 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\A.{51,65}\s*$</string>
+					<string>\A.{66,}$</string>
 					<key>name</key>
-					<string>invalid.deprecated.line-too-long.git-commit</string>
+					<string>invalid.illegal.line-too-long.git-commit</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -57,9 +57,9 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\A.{66,}\s*$</string>
+					<string>\A.{51,}$</string>
 					<key>name</key>
-					<string>invalid.illegal.line-too-long.git-commit</string>
+					<string>invalid.deprecated.line-too-long.git-commit</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -71,7 +71,7 @@
 			<key>begin</key>
 			<string>(?=# Please enter the commit message)</string>
 			<key>end</key>
-			<string>(?=not)possible</string>
+			<string>\z</string>
 			<key>name</key>
 			<string>meta.scope.metadata.git-commit</string>
 			<key>patterns</key>
@@ -181,7 +181,7 @@
 					<key>contentName</key>
 					<string>source.diff</string>
 					<key>end</key>
-					<string>(?=not)possible</string>
+					<string>\z</string>
 					<key>name</key>
 					<string>meta.embedded.diff.git-commit</string>
 					<key>patterns</key>
