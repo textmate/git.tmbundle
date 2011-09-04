@@ -11,13 +11,23 @@ dispatch(:controller =&gt; "misc", :action =&gt; "gitk")
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Visualize Branch History With GitK</string>
-	<key>output</key>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
 	<string>discard</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>20F5C491-F71C-4963-9C61-DF7294976550</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

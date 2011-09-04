@@ -28,13 +28,23 @@ end
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Compare Branches…</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>E56D4990-B615-4788-A46C-5D0CDE750D56</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

@@ -11,13 +11,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "remote", :action =&gt; "fetch"</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Fetch</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>491D8DB3-8CB2-4888-ACD8-C94FAB125B38</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

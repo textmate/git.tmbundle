@@ -11,13 +11,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "status", :action =&gt; "edit_conflicted_file"</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Edit Conflicted File…</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>0DBC221A-B726-4367-A5E1-04AB999F8CC2</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

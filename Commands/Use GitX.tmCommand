@@ -11,13 +11,23 @@ dispatch(:controller =&gt; "misc", :action =&gt; "gitx")
 </string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Visualize History with GitX</string>
-	<key>output</key>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
 	<string>discard</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>1C12DE42-78A9-4DCA-BB55-2B8E6328C72D</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

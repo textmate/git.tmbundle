@@ -61,13 +61,23 @@ File.open(right_file, "w") { |f| f.puts right }
 </string>
 	<key>input</key>
 	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^G</string>
+	<string>^S</string>
 	<key>name</key>
 	<string>Edit Conflicts With FileMerge…</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
 	<key>uuid</key>
 	<string>7CE2C842-EBC4-443C-8DDB-3B16AC593D9A</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
