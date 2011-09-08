@@ -11,11 +11,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "misc", :action =&gt; "init"</string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^S</string>
 	<key>name</key>
 	<string>Initialize Repository</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>-attr.scm</string>
 	<key>uuid</key>
 	<string>556EF65D-C59B-4A15-BA4A-D5D87C2695A0</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

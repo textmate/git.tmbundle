@@ -11,11 +11,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "config", :action =&gt; "index"</string>
 	<key>input</key>
 	<string>none</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>keyEquivalent</key>
+	<string>^S</string>
 	<key>name</key>
 	<string>Config…</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>-attr.scm, attr.scm.git</string>
 	<key>uuid</key>
 	<string>794C7EF9-B0A5-4B27-90BD-000837237B85</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
