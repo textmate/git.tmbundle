@@ -133,6 +133,15 @@
 		<string>E0901B2E-8953-4A2F-A872-8DBE1A047370</string>
 		<string>683BF855-9BC9-47A6-89DD-7C2192E62FD7</string>
 	</array>
+	<key>require</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>SCM</string>
+			<key>uuid</key>
+			<string>3BDF79F4-94AE-46C0-BFBF-D5572AD2F515</string>
+		</dict>
+	</array>
 	<key>uuid</key>
 	<string>EADD4718-EE11-4ABF-A7E6-13351FB3799D</string>
 </dict>
