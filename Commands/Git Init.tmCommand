@@ -13,8 +13,6 @@ dispatch :controller =&gt; "misc", :action =&gt; "init"</string>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Initialize Repository</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "misc", :action =&gt; "init"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>-attr.scm</string>
+	<key>semanticClass</key>
+	<string>action.scm.new</string>
 	<key>uuid</key>
 	<string>556EF65D-C59B-4A15-BA4A-D5D87C2695A0</string>
 	<key>version</key>

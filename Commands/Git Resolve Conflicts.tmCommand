@@ -63,8 +63,6 @@ File.open(right_file, "w") { |f| f.puts right }
 	<string>document</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Edit Conflicts With FileMerge…</string>
 	<key>outputCaret</key>
@@ -75,6 +73,8 @@ File.open(right_file, "w") { |f| f.puts right }
 	<string>toolTip</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.conflicts</string>
 	<key>uuid</key>
 	<string>7CE2C842-EBC4-443C-8DDB-3B16AC593D9A</string>
 	<key>version</key>

@@ -13,8 +13,6 @@ dispatch :controller =&gt; "submodule", :action =&gt; "index"</string>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Submodules…</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "submodule", :action =&gt; "index"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.other</string>
 	<key>uuid</key>
 	<string>3F77F0FC-F476-4B83-92D1-77D854A9D64D</string>
 	<key>version</key>

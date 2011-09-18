@@ -13,8 +13,6 @@ dispatch(:controller =&gt; "branch", :action =&gt; "switch")
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Branches (Show/Switch)…</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch(:controller =&gt; "branch", :action =&gt; "switch")
 	<string>toolTip</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.branches</string>
 	<key>uuid</key>
 	<string>7F8D2058-E106-40DC-9FBE-F32A1202D158</string>
 	<key>version</key>

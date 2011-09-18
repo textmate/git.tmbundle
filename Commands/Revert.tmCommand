@@ -29,8 +29,6 @@ end
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Revert…</string>
 	<key>outputCaret</key>
@@ -41,6 +39,8 @@ end
 	<string>toolTip</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.revert</string>
 	<key>uuid</key>
 	<string>CDEA521C-8963-414F-8F8E-F9B81EF79ADA</string>
 	<key>version</key>

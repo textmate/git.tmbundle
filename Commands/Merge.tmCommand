@@ -13,8 +13,6 @@ dispatch :controller =&gt; 'branch', :action =&gt; 'merge'</string>
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Merge…</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; 'branch', :action =&gt; 'merge'</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.branches</string>
 	<key>uuid</key>
 	<string>246BC5D6-F4DC-458B-8966-C601B65AA1E9</string>
 	<key>version</key>

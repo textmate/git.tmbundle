@@ -13,8 +13,6 @@ dispatch :controller =&gt; "remote", :action =&gt; "push"</string>
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Push Current Branch</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "remote", :action =&gt; "push"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.push</string>
 	<key>uuid</key>
 	<string>3F84F9EB-027A-4200-B29B-C99EFA09F453</string>
 	<key>version</key>

@@ -13,8 +13,6 @@ dispatch(:controller =&gt; "misc", :action =&gt; "gitnub")
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Visualize History with Gitnub</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch(:controller =&gt; "misc", :action =&gt; "gitnub")
 	<string>discard</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.other</string>
 	<key>uuid</key>
 	<string>1FF5FF82-13A0-4C83-BAD6-D67AE8180FA9</string>
 	<key>version</key>

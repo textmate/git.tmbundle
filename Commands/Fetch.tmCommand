@@ -13,8 +13,6 @@ dispatch :controller =&gt; "remote", :action =&gt; "fetch"</string>
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Fetch</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "remote", :action =&gt; "fetch"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.fetch</string>
 	<key>uuid</key>
 	<string>491D8DB3-8CB2-4888-ACD8-C94FAB125B38</string>
 	<key>version</key>

@@ -13,8 +13,6 @@ dispatch :controller =&gt; "status", :action =&gt; "edit_conflicted_file"</strin
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Edit Conflicted File…</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "status", :action =&gt; "edit_conflicted_file"</strin
 	<string>toolTip</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.conflicts</string>
 	<key>uuid</key>
 	<string>0DBC221A-B726-4367-A5E1-04AB999F8CC2</string>
 	<key>version</key>

@@ -13,8 +13,6 @@ dispatch(:controller =&gt; "status")
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Status</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch(:controller =&gt; "status")
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.status</string>
 	<key>uuid</key>
 	<string>41F8764A-63DE-4965-9192-918E49E15907</string>
 	<key>version</key>

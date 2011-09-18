@@ -13,8 +13,6 @@ dispatch :controller =&gt; "diff", :action =&gt; "compare_revisions"</string>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Compare Revisions…</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "diff", :action =&gt; "compare_revisions"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.diff</string>
 	<key>uuid</key>
 	<string>E9180CC9-BA7D-4271-A0A4-0263D8A71F46</string>
 	<key>version</key>

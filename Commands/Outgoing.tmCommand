@@ -13,8 +13,6 @@ dispatch :controller =&gt; "log", :action =&gt; "outgoing"</string>
 	<string>selection</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Outgoing</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "log", :action =&gt; "outgoing"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.other</string>
 	<key>uuid</key>
 	<string>1D25F132-718E-4B97-95CC-724AAC35E46C</string>
 	<key>version</key>

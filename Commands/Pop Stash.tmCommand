@@ -13,8 +13,6 @@ dispatch :controller =&gt; "stash", :action =&gt; "pop"</string>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Pop Stash (Apply then drop)</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch :controller =&gt; "stash", :action =&gt; "pop"</string>
 	<string>newWindow</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.other.stash</string>
 	<key>uuid</key>
 	<string>47EB2C81-B093-4627-9DE7-454A60C3A98C</string>
 	<key>version</key>

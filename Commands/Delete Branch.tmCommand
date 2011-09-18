@@ -13,8 +13,6 @@ dispatch(:controller =&gt; "branch", :action =&gt; "delete")</string>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
-	<key>keyEquivalent</key>
-	<string>^S</string>
 	<key>name</key>
 	<string>Delete Branch...</string>
 	<key>outputCaret</key>
@@ -25,6 +23,8 @@ dispatch(:controller =&gt; "branch", :action =&gt; "delete")</string>
 	<string>toolTip</string>
 	<key>scope</key>
 	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.branches</string>
 	<key>uuid</key>
 	<string>508C7FCD-E5DD-4E60-88C3-A668C48273B7</string>
 	<key>version</key>
