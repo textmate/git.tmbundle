@@ -100,7 +100,7 @@
 					<key>begin</key>
 					<string>(?=^# Changes to be committed:)</string>
 					<key>end</key>
-					<string>(?!\G)(?=^# \w)</string>
+					<string>(?!\G)((?=^# \w)|(?!^#))</string>
 					<key>patterns</key>
 					<array>
 						<dict>
