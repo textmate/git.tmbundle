@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-CW = ENV['TM_SUPPORT_PATH'] + '/bin/CommitWindow.app/Contents/MacOS/CommitWindow'
+CW = ENV['TM_SCM_COMMIT_WINDOW']
 
 module PartialCommitWorker
   class NotOnBranchException < Exception; end
