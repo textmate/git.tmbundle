@@ -11,11 +11,23 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "commit", :action =&gt; "add"</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>Add file to the index</string>
-	<key>output</key>
-	<string>showAsTooltip</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
+	<string>toolTip</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.add</string>
 	<key>uuid</key>
 	<string>E0901B2E-8953-4A2F-A872-8DBE1A047370</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
