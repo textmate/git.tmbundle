@@ -24,46 +24,37 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
+					<key>begin</key>
+					<string>\G</string>
+					<key>end</key>
+					<string>^(?!\G)</string>
+					<key>patterns</key>
+					<array>
 						<dict>
-							<key>patterns</key>
-							<array>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
 								<dict>
-									<key>include</key>
-									<string>#keywords</string>
+									<key>name</key>
+									<string>keyword.other.$2.git-commit</string>
 								</dict>
-							</array>
+							</dict>
+							<key>match</key>
+							<string>\G((fixup|squash)!)\s*</string>
 						</dict>
-					</dict>
-					<key>match</key>
-					<string>\A.{66,}$</string>
-					<key>name</key>
-					<string>invalid.illegal.line-too-long.git-commit</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
 						<dict>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#keywords</string>
-								</dict>
-							</array>
+							<key>match</key>
+							<string>.{66,}$</string>
+							<key>name</key>
+							<string>invalid.illegal.line-too-long.git-commit</string>
 						</dict>
-					</dict>
-					<key>match</key>
-					<string>\A.{51,}$</string>
-					<key>name</key>
-					<string>invalid.deprecated.line-too-long.git-commit</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#keywords</string>
+						<dict>
+							<key>match</key>
+							<string>.{51,}$</string>
+							<key>name</key>
+							<string>invalid.deprecated.line-too-long.git-commit</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -85,13 +76,6 @@
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>keywords</key>
-		<dict>
-			<key>match</key>
-			<string>\A(fixup|squash)!</string>
-			<key>name</key>
-			<string>keyword.other.$1.git-commit</string>
-		</dict>
 		<key>metadata</key>
 		<dict>
 			<key>patterns</key>
