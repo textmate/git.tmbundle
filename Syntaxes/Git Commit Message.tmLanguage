@@ -9,7 +9,7 @@
 	<key>foldingStartMarker</key>
 	<string>^\+\+\+</string>
 	<key>foldingStopMarker</key>
-	<string>^---|^$</string>
+	<string>^---</string>
 	<key>name</key>
 	<string>Git Commit Message</string>
 	<key>patterns</key>
