@@ -29,6 +29,21 @@ STDOUT &lt;&lt; "fixup! ${1|#{choices.join ','}|}"
 	<string>snippet</string>
 	<key>outputLocation</key>
 	<string>atCaret</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>git</string>
+			<key>locations</key>
+			<array>
+				<string>/usr/local/git/bin/git</string>
+				<string>/opt/local/bin/git</string>
+				<string>/usr/local/bin/git</string>
+			</array>
+			<key>variable</key>
+			<string>TM_GIT</string>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>text.git-commit</string>
 	<key>tabTrigger</key>

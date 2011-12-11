@@ -21,6 +21,21 @@ dispatch :controller =&gt; "diff", :action =&gt; "uncommitted_changes"</string>
 	<string>html</string>
 	<key>outputLocation</key>
 	<string>newWindow</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>git</string>
+			<key>locations</key>
+			<array>
+				<string>/usr/local/git/bin/git</string>
+				<string>/opt/local/bin/git</string>
+				<string>/usr/local/bin/git</string>
+			</array>
+			<key>variable</key>
+			<string>TM_GIT</string>
+		</dict>
+	</array>
 	<key>scope</key>
 	<string>attr.scm.git</string>
 	<key>semanticClass</key>

@@ -15,6 +15,21 @@ dispatch :controller =&gt; "svn", :action =&gt; "rebase"</string>
 	<string>~@g</string>
 	<key>name</key>
 	<string>SVN Rebase</string>
+	<key>requiredCommands</key>
+	<array>
+		<dict>
+			<key>command</key>
+			<string>git</string>
+			<key>locations</key>
+			<array>
+				<string>/usr/local/git/bin/git</string>
+				<string>/opt/local/bin/git</string>
+				<string>/usr/local/bin/git</string>
+			</array>
+			<key>variable</key>
+			<string>TM_GIT</string>
+		</dict>
+	</array>
 	<key>output</key>
 	<string>showAsHTML</string>
 	<key>uuid</key>
