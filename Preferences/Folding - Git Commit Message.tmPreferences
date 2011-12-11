@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Folding (Git Commit Message)</string>
+	<key>scope</key>
+	<string>text.git-commit</string>
+	<key>settings</key>
+	<dict>
+		<key>foldingStartMarker</key>
+		<string>^\+\+\+</string>
+		<key>foldingStopMarker</key>
+		<string>^---</string>
+	</dict>
+	<key>uuid</key>
+	<string>1A0DB209-7219-4BA5-BB32-3A282919890B</string>
+</dict>
+</plist>
