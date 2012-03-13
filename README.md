@@ -5,10 +5,10 @@
 Unfortunately I am unable to devote any significant amount of time to
 supporting this TextMate bundle.
 
-I can merge any pull requests that come through and until someone
+I can merge any pull requests that come through until someone hopefully
 volunteers to take over maintenance.
 
-If you would like to take help keep this bundle alive please contact me
+If you would like to help keep this bundle alive please contact me
 through Github and we can discuss transferring ownership over to you.
 
 ---
