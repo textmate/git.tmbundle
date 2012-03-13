@@ -1,6 +1,4 @@
-# The Git Textmate Bundle.
-
-## This fork is no longer maintained
+# This fork is no longer maintained
 
 Unfortunately I am unable to devote any significant amount of time to
 supporting this TextMate bundle.
@@ -12,6 +10,8 @@ If you would like to help keep this bundle alive please contact me
 through Github and we can discuss transferring ownership over to you.
 
 ---
+
+# The Git Textmate Bundle.
 
 ## Installation
 
