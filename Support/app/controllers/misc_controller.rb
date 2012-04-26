@@ -32,7 +32,18 @@ class MiscController < ApplicationController
       output_show_tool_tip
     end
   end
-  
+
+  def stree
+    cmd = first_which(git.config["git-tmbundle.stree-path"], "stree", "/Applications/SourceTree.app/Contents/Resources/stree")
+    if cmd
+      rootdir = git.root()
+      run_detached("cd '#{rootdir}';" + cmd, "SourceTree")
+    else
+      puts "Unable to find SourceTree.  Use the config dialog to set the SourceTree path to where you've installed it."
+      output_show_tool_tip
+    end
+  end
+
   protected
     def first_which(*args)
       args.map do |arg|
