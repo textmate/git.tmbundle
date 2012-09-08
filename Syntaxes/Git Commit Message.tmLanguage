@@ -4,7 +4,8 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>COMMIT_EDITMSG</string>
+		<string>.git/COMMIT_EDITMSG</string>
+		<string>.git/MERGE_MSG</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>^\+\+\+</string>
