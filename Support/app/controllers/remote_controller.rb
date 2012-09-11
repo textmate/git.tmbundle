@@ -45,7 +45,7 @@ class RemoteController < ApplicationController
     
     remote_names = git.remote.names.with_this_at_front(branch.remote_name)
     
-    TextMate::UI.request_item(:title => "Push", :prompt => "Pull from where?", :items => remote_names) do |remote_name|
+    TextMate::UI.request_item(:title => "Pull", :prompt => "Pull from where?", :items => remote_names) do |remote_name|
       # check to see if the branch has a pull remote set up.  if not, prompt them for which branch to pull from
       if (remote_name != branch.remote_name) || branch.merge.nil?
         # select a branch to merge from
