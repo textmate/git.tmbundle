@@ -332,6 +332,7 @@ module SCM
     def diff_check_output(options = {})
       options = {:file => options} unless options.is_a?(Hash)
       params = ["diff"]
+      params << ["--no-ext-diff"]
       params << ["--check"]
 
       lr = get_range_arg(options)
@@ -349,6 +350,7 @@ module SCM
     def diff(options = {})
       options = {:file => options} unless options.is_a?(Hash)
       params = ["diff"]
+      params << ["--no-ext-diff"]
       params << ["-U", options[:context_lines]] if options[:context_lines]
       
       lr = get_range_arg(options)
