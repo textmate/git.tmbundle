@@ -65,7 +65,7 @@ class ApplicationController
     start_layout
     Object::STDOUT << @output_buffer.string
     Object::flush
-    @output_buffer.truncate(0)
+    @output_buffer.string = ""
   end
   
   def start_layout
