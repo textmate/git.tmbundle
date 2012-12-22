@@ -12,7 +12,7 @@
 # http://code.leadmediapartners.com/
 
 require "fileutils"
-FM="/Developer/Applications/Utilities/FileMerge.app/Contents/MacOS/FileMerge"
+FM="/Applications/Xcode.app/Contents/Applications/FileMerge.app/Contents/MacOS/FileMerge"
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/escape.rb'
 
