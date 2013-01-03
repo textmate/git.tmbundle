@@ -7,6 +7,7 @@
 		<string>.git/config</string>
 		<string>.gitconfig</string>
 		<string>etc/gitconfig</string>
+		<string>.gitmodules</string>
 	</array>
 	<key>name</key>
 	<string>Git Config</string>
