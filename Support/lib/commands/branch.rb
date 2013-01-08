@@ -36,7 +36,6 @@ class SCM::Git::Branch < SCM::Git::CommandProxyBase
   
   def switch(name)
     result = base.command("checkout", name)
-    rescan_project
     result
   end
   

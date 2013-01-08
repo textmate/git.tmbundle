@@ -80,14 +80,6 @@ def tm_open(file, options = {})
 end
 
 
-def rescan_project
-  %x{osascript &>/dev/null \
-     -e 'tell app "SystemUIServer" to activate' \
-     -e 'tell app "#{File.basename(ENV['TM_APP_PATH'], '.app')}" to activate' &
-     }
-end
-
-
 # this method only applies when the whole document contents are sent in
 def tm_expanded_selection(options = {})
   text=ENV['TM_SELECTED_TEXT'].to_s

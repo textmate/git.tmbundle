@@ -22,7 +22,6 @@ if 'Revert' == TextMate::UI.alert(:warning, "Revert #{files}?", "Do you really w
 
   puts git.revert(paths)
 
-  git.rescan_project
 end
 </string>
 	<key>input</key>

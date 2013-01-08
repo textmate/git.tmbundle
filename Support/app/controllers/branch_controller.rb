@@ -80,7 +80,6 @@ class BranchController < ApplicationController
       @result = git.merge(@merge_from_branch)
       render "merge"
     end
-    rescan_project
     true
   end
     
@@ -164,7 +163,6 @@ class BranchController < ApplicationController
         else
           puts htmlize(output)
           output_show_html
-          rescan_project
         end
       end
     end

@@ -153,7 +153,6 @@ class RemoteController < ApplicationController
         :progress => lambda { |state, percentage, index, count| progress(remote_name, state, percentage, index, count)},
         :end => lambda { |state, count| progress_end(remote_name, state, count) }
       )
-      rescan_project
       pulls
     end
     
