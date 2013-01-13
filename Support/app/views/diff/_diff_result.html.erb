@@ -42,10 +42,12 @@
         else
           ["", "unchanged"]
       end
+	  ln_right = line[:ln_right]
+	  ln_right = link_to_relative_file(git, diff_result[:right][:file_path], ln_right, ln_right) unless [ :deletion, :eof, :cut ].include?(line[:type])
       %>
         <tr>
           <td class="line-numbers <%= line_num_class %>"><%= line[:ln_left] %></td>
-          <td class="line-numbers <%= line_num_class %>"><%= line[:ln_right] %></td>
+          <td class="line-numbers <%= line_num_class %>"><%= ln_right %></td>
           <td class="code <%= row_class %>"><%= htmlize(line[:text]) %></td></tr>
     <% end %>
   </tbody>
