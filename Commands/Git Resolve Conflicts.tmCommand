@@ -47,7 +47,7 @@ if left==right
 end
 
 filename = "git-conflict-resolve"
-tmp_path = "/tmp/git-conflict-resolve/"
+tmp_path = "#{ENV['TMPDIR']}/git-conflict-resolve/"
 
 FileUtils.rm_rf(tmp_path)
 FileUtils.mkdir_p(tmp_path)

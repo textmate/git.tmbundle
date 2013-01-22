@@ -283,7 +283,7 @@ module SCM
     end
 
     def show_to_tmp_file(fullpath, revision)
-      temp_name = '/tmp/' + human_readable_mktemp(fullpath, revision)
+      temp_name = "#{ENV['TMPDIR']}/" + human_readable_mktemp(fullpath, revision)
       File.open(temp_name, "w") {|f| f.puts show(fullpath, revision) }
       temp_name
     end
@@ -363,7 +363,7 @@ module SCM
       end
 
       output = command(*params)
-      File.open("/tmp/output.diff", "a") {|f| f.puts check + output }
+      File.open("#{ENV['TMPDIR']}/output.diff", "a") {|f| f.puts check + output }
       parse_diff(output)
     end
     

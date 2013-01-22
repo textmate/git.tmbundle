@@ -4,7 +4,7 @@ module StreamProgressMethods
   
   def each_line_from_stream(stream, &block)
     line = ""
-    f = File.open("/tmp/output", "wb")
+    f = File.open("#{ENV['TMPDIR']}/output", "wb")
     stream.each_byte do |char|
       f.putc(char)
       char = [char].pack('c')
