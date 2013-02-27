@@ -11,10 +11,16 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "svn", :action =&gt; "fetch"</string>
 	<key>input</key>
 	<string>none</string>
-	<key>keyEquivalent</key>
-	<string>~@g</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>SVN Fetch</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>requiredCommands</key>
 	<array>
 		<dict>
@@ -30,9 +36,9 @@ dispatch :controller =&gt; "svn", :action =&gt; "fetch"</string>
 			<string>TM_GIT</string>
 		</dict>
 	</array>
-	<key>output</key>
-	<string>showAsHTML</string>
 	<key>uuid</key>
 	<string>1CCC4394-A243-4E78-A720-B2DA1BC37DC0</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

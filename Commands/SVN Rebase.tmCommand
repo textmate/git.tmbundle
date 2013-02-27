@@ -11,10 +11,16 @@ require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "svn", :action =&gt; "rebase"</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>~@g</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>SVN Rebase</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>requiredCommands</key>
 	<array>
 		<dict>
@@ -30,9 +36,9 @@ dispatch :controller =&gt; "svn", :action =&gt; "rebase"</string>
 			<string>TM_GIT</string>
 		</dict>
 	</array>
-	<key>output</key>
-	<string>showAsHTML</string>
 	<key>uuid</key>
 	<string>CFB9BB9D-4F47-47DA-819B-58F0B29FA560</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
