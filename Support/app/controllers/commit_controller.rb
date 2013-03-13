@@ -24,9 +24,9 @@ class CommitController < ApplicationController
   end
   
   def add
-    file = ENV['TM_FILEPATH']
-    git.add(file)
-    puts "Added '#{git.relative_path_for(file)}' to the index"
+    paths = git.paths(:unique => true, :fallback => :current_file)
+    git.add(paths)
+    paths.each { |file| puts "Added '#{git.relative_path_for(file)}' to the index" }
     exit_show_tool_tip
   end
   
