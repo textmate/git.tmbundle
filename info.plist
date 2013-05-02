@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>name</key>
+	<string>Git</string>
+	<key>description</key>
+	<string>Support for the Git version control system.</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>items</key>
@@ -81,8 +85,7 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>name</key>
-	<string>Git</string>
+
 	<key>ordering</key>
 	<array>
 		<string>41F8764A-63DE-4965-9192-918E49E15907</string>
