@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 require File.dirname(__FILE__) + '/../environment.rb'
 git = Git.new
 command = ARGV.shift
