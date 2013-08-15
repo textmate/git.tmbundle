@@ -5,7 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
+	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 # encoding: utf-8
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
@@ -22,7 +22,6 @@ if 'Revert' == TextMate::UI.alert(:warning, "Revert #{files}?", "Do you really w
 
   puts git.revert(paths)
 
-  git.rescan_project
 end
 </string>
 	<key>input</key>

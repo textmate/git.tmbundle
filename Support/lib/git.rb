@@ -283,7 +283,7 @@ module SCM
     end
 
     def show_to_tmp_file(fullpath, revision)
-      temp_name = '/tmp/' + human_readable_mktemp(fullpath, revision)
+      temp_name = "#{ENV['TMPDIR']}/" + human_readable_mktemp(fullpath, revision)
       File.open(temp_name, "w") {|f| f.puts show(fullpath, revision) }
       temp_name
     end
@@ -332,6 +332,7 @@ module SCM
     def diff_check_output(options = {})
       options = {:file => options} unless options.is_a?(Hash)
       params = ["diff"]
+      params << ["--no-ext-diff"]
       params << ["--check"]
 
       lr = get_range_arg(options)
@@ -349,6 +350,7 @@ module SCM
     def diff(options = {})
       options = {:file => options} unless options.is_a?(Hash)
       params = ["diff"]
+      params << ["--no-ext-diff"]
       params << ["-U", options[:context_lines]] if options[:context_lines]
       
       lr = get_range_arg(options)
@@ -361,7 +363,7 @@ module SCM
       end
 
       output = command(*params)
-      File.open("/tmp/output.diff", "a") {|f| f.puts check + output }
+      File.open("#{ENV['TMPDIR']}/output.diff", "a") {|f| f.puts check + output }
       parse_diff(output)
     end
     

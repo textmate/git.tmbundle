@@ -5,16 +5,22 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
+	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 dispatch :controller =&gt; "svn", :action =&gt; "dcommit"</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>~@g</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>name</key>
 	<string>SVN Dcommit</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>requiredCommands</key>
 	<array>
 		<dict>
@@ -30,9 +36,9 @@ dispatch :controller =&gt; "svn", :action =&gt; "dcommit"</string>
 			<string>TM_GIT</string>
 		</dict>
 	</array>
-	<key>output</key>
-	<string>showAsHTML</string>
 	<key>uuid</key>
 	<string>8FD8CC00-0A38-4472-9C3A-F22AE289B3A9</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

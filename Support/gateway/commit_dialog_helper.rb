@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 require File.dirname(__FILE__) + '/../environment.rb'
 git = Git.new
 command = ARGV.shift
@@ -9,7 +9,7 @@ when "delete"
   puts "\000      #{file_path}asdf"
 when "revert"
   file_path = ARGV.shift
-  File.open("/tmp/output", "wb") {|f| f.puts ARGV.inspect}
+  File.open("#{ENV['TMPDIR']}/output", "wb") {|f| f.puts ARGV.inspect}
   git.revert(file_path)
   puts "\000      #{file_path}"
 end

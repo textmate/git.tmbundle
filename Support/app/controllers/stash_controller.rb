@@ -60,8 +60,6 @@ class StashController < ApplicationController
     
     puts "<h2>Diff of stash applied:</h2>"
     render("/diff/_diff_results", :locals => {:diff_results => stash_diff})
-    
-    rescan_project
   end
   
   def save
@@ -87,7 +85,6 @@ class StashController < ApplicationController
       
     end
     puts result
-    rescan_project
   end
   
   def clear

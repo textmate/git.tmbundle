@@ -27,7 +27,6 @@ class SubmoduleController < ApplicationController
     puts <<-EOF
 <p>Done.</p>
 EOF
-    rescan_project
   end
   
   def update

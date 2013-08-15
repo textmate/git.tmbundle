@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>COMMIT_EDITMSG</string>
+		<string>MERGE_MSG</string>
 	</array>
 	<key>foldingStartMarker</key>
 	<string>^\+\+\+</string>

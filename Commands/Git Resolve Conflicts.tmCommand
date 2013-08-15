@@ -5,14 +5,14 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
+	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 
 # Resolve conflicts command for git/FileMerge
 # By Tim Harper
 # http://code.leadmediapartners.com/
 
 require "fileutils"
-FM="/Developer/Applications/Utilities/FileMerge.app/Contents/MacOS/FileMerge"
+FM="#{`"$TM_SUPPORT_PATH/bin/find_app" FileMerge.app`}/Contents/MacOS/FileMerge"
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/escape.rb'
 
@@ -47,7 +47,7 @@ if left==right
 end
 
 filename = "git-conflict-resolve"
-tmp_path = "/tmp/git-conflict-resolve/"
+tmp_path = "#{ENV['TMPDIR']}/git-conflict-resolve/"
 
 FileUtils.rm_rf(tmp_path)
 FileUtils.mkdir_p(tmp_path)
