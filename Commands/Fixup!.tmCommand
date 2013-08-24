@@ -11,7 +11,7 @@ def escape(choice)
   choice.gsub(/[,|\\$]/, '\\\\\0')
 end
 
-choices = %x{ "${TM_GIT:-git}" log --pretty=tformat:'%s' -n15 }.split(/\n/)
+choices = %x{ cd "$TM_PROJECT_DIRECTORY" &amp;&amp; "${TM_GIT:-git}" log --pretty=tformat:'%s' -n15 }.split(/\n/)
 choices.reject! { |choice| choice =~ /^(fixup|squash)\b/ }
 choices.map! { |choice| escape choice }
 
