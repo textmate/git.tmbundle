@@ -732,6 +732,10 @@ table.codediff td.line-num-eof {
 	font-style: italic !important;
 }
 
+table.codediff td.code span.trailing-whitespace {
+  background-color: #eb7f7a;
+}
+
 #global-config {
   float: left;
   width: 50%;
