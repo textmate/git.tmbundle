@@ -4,4 +4,12 @@ module DiffHelper
       line[:text].gsub("Subproject commit ", "")
     end
   end
+
+  def htmlize_highlight_trailing_whitespace (text)
+    if text =~ /[ \t]+$/
+      htmlize($`) + content_tag(:span, $&, :class => "trailing-whitespace")
+    else
+      htmlize(text)
+    end
+  end
 end
