@@ -14,23 +14,28 @@
       <%
         tabindex = 0
         [
-          ["Name",              "user.name",                      [:global]],
-          ["Email",             "user.email",                     [:global]],
+          ["text",   "Name",              "user.name",                      [:global]],
+          ["text",   "Email",             "user.email",                     [:global]],
           [],
-          ["Log limit",         "git-tmbundle.log.limit",         [:global, :local], {:style => "width: 40px"}],
-          ["Log context lines", "git-tmbundle.log.context-lines", [:global, :local], {:style => "width: 40px"}],
-          ["Show diff check (yes or no)",   "git-tmbundle.show-diff-check",   [:global, :local], {:style => "width: 40px"}],
+          ["text",   "Log limit",         "git-tmbundle.log.limit",         [:global, :local], {:style => "width: 40px"}],
+          ["text",   "Log context lines", "git-tmbundle.log.context-lines", [:global, :local], {:style => "width: 40px"}],
+          ["text",   "Show diff check (yes or no)",   "git-tmbundle.show-diff-check",   [:global, :local], {:style => "width: 40px"}],
           [],
-          ["Gitnub path",       "git-tmbundle.gitnub-path",       [:global], {:style => "width: 250px"}],
-          ["GitX path",         "git-tmbundle.gitx-path",         [:global], {:style => "width: 250px"}],
-        ].each do |label, key, scopes, input_options|
+          ["select", "External Git App", "git-tmbundle.ext-app", [:global], {
+              :select_options => {:gitgui => "Git Gui", :gitk => "gitk", :gitnub => "Gitnub",
+                                  :gitx => "GitX", :stree => "SourceTree", :custom => "custom" }
+          }],
+          ["text",   "Gitnub path",       "git-tmbundle.gitnub-path",       [:global], {:style => "width: 250px"}],
+          ["text",   "GitX path",         "git-tmbundle.gitx-path",         [:global], {:style => "width: 250px"}],
+          ["text",   "Custom Command",    "git-tmbundle.ext-custom-cmd",    [:global], {:style => "width: 250px"}],
+        ].each do |type, label, key, scopes, input_options|
       %>
       <tr>
         <% [:global, :local].each do |scope| %>
-          <% if scopes && scopes.include?(scope) 
+          <% if scopes && scopes.include?(scope)
             tabindex += 1 %>
             <td><%= label %></td>
-            <td><%= config_text_field scope, key, {:tabindex => tabindex}.merge(input_options || {}) %></td>
+            <td><%= config_form_field type, scope, key, {:tabindex => tabindex}.merge(input_options || {}) %></td>
           <% else %>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
@@ -40,6 +45,6 @@
       <% end %>
     </tbody>
   </table>
-  
+
 </form>
 

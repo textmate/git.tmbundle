@@ -4,35 +4,28 @@ class MiscController < ApplicationController
     puts "<h2>Initializing Git Repository in #{ENV['TM_PROJECT_DIRECTORY']}</h2>"
     puts htmlize(git.init(ENV["TM_PROJECT_DIRECTORY"]))
   end
-  
-  def gitk
-    run_detached("PATH=#{File.dirname(git.git)}:$PATH && gitk --all", "Wish Shell")
-  end
-  
-  def gitgui
-    run_detached("PATH=#{File.dirname(git.git)}:$PATH && git gui", "Git Gui")
-  end
-  
-  def gitnub
-    cmd = first_which(git.config["git-tmbundle.gitnub-path"], "nub", "/Applications/GitNub.app/Contents/MacOS/GitNub")
-    if cmd
-      run_detached(cmd + " #{ENV['TM_PROJECT_DIRECTORY']}", "Gitnub")
+
+  def external
+    gui_type = git.config["git-tmbundle.ext-app"]
+    case gui_type
+    when "gitk"
+      ext_gitk
+    when "gitgui"
+      ext_gitgui
+    when "gitx"
+      ext_gitx
+    when "gitnub"
+      ext_gitnub
+    when "stree"
+      ext_stree
+    when "custom"
+      ext_custom
     else
-      puts "Unable to find Gitnub.  Use the config dialog to set the Gitnub path to where you've installed it."
+      puts "Select an external GUI tool from the config dialog(Bundles → Git → Config...)."
       output_show_tool_tip
     end
   end
-  
-  def gitx
-    cmd = first_which(git.config["git-tmbundle.gitx-path"], "gitx", "/Applications/GitX.app/Contents/Resources/gitx")
-    if cmd
-      run_detached("cd '#{ENV['TM_DIRECTORY']}';" + cmd, "GitX")
-    else
-      puts "Unable to find GitX.  Use the config dialog to set the GitX path to where you've installed it."
-      output_show_tool_tip
-    end
-  end
-  
+
   protected
     def first_which(*args)
       args.map do |arg|
@@ -42,7 +35,7 @@ class MiscController < ApplicationController
       end
       nil
     end
-    
+
     def run_detached(cmd, app_name)
       exit if fork            # Parent exits, child continues.
       Process.setsid          # Become session leader.
@@ -63,5 +56,53 @@ class MiscController < ApplicationController
       Process.detach(pid)
       #inspired by http://andrejserafim.wordpress.com/2007/12/16/multiple-threads-and-processes-in-ruby/
     end
-  
+
+    def ext_gitk
+      run_detached("cd '#{git.path()}'; PATH=#{File.dirname(git.git)}:$PATH && gitk --all", "Wish")
+    end
+
+    def ext_gitgui
+      run_detached("cd '#{git.path()}'; PATH=#{File.dirname(git.git)}:$PATH && git gui", "Git Gui")
+    end
+
+    def ext_gitnub
+      cmd = first_which(git.config["git-tmbundle.gitnub-path"], "nub", "/Applications/GitNub.app/Contents/MacOS/GitNub")
+      if cmd
+        run_detached(cmd + " #{ENV['TM_PROJECT_DIRECTORY']}", "Gitnub")
+      else
+        puts "Unable to find Gitnub.  Use the config dialog to set the Gitnub path to where you've installed it."
+        output_show_tool_tip
+      end
+    end
+
+    def ext_gitx
+      cmd = first_which(git.config["git-tmbundle.gitx-path"], "gitx", "/Applications/GitX.app/Contents/Resources/gitx")
+      if cmd
+        run_detached("cd '#{ENV['TM_DIRECTORY']}';" + cmd, "GitX")
+      else
+        puts "Unable to find GitX.  Use the config dialog to set the GitX path to where you've installed it."
+        output_show_tool_tip
+      end
+    end
+
+    def ext_stree
+      cmd = first_which(git.config["git-tmbundle.stree-path"], "stree", "/Applications/SourceTree.app/Contents/Resources/stree")
+      if cmd
+        run_detached("cd '#{git.path()}';" + cmd, "SourceTree")
+      else
+        puts "Unable to find SourceTree.  Use the config dialog to set the SourceTree path to where you've installed it."
+        output_show_tool_tip
+      end
+    end
+
+    def ext_custom
+      cmd = git.config["git-tmbundle.ext-custom-cmd"]
+      if cmd
+        run_detached("cd '#{git.path()}'; " + cmd, "Custom Git GUI")
+      else
+        puts "Set the custom GUI command to use from the config dialog(Bundles → Git → Config...)."
+        output_show_tool_tip
+      end
+
+    end
 end
