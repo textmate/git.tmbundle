@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>.git/config</string>
+		<string>git/config</string>
 		<string>.gitconfig</string>
 		<string>etc/gitconfig</string>
 		<string>.gitmodules</string>
