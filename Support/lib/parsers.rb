@@ -16,45 +16,27 @@ module Parsers
   end
 
   def parse_status_hash(input)
-    output = []
     file_statuses = {}
-    state = nil
+
     input.split("\n").each do |line|
-      case line
-      when /^# Changes to be committed:/
-        state = :added
-      when /^# Changed but not updated:/
-        state = :modified
-      when /^# Untracked files:/
-        state = :untracked
-      when /^#\t(([a-z ]+): +){0,1}(.*?)(?: \([a-z ]+\))?$/
-        filename = $3
-        status_description = $2
-        status = case status_description
-        when "new file"
-          state == :added ? "A" : "?"
-        when "renamed"
-          filename = filename.split(/ +\-> +/).last
-          "R"
-        when "deleted"
-          "D"
-        when "modified"
-          "M"
-        when "unmerged", 'both modified'
+      if line =~ /^([A-Z|\?| ])([A-Z|\?| ]) (.* -> )?(.*)/
+        file_status = ($1 == " " ? $2 : $1)
+        file_name    = $4
+
+        # Handle merge conflicts and submodules
+        if $1 == "U" || $2 == "U" || ($1 == "D" && $2 == "D") || ($1 == "A" && $1 == "A")
           # do a quick check to see if the merge is resolved
           if File.directory?(path_for(filename)) # it's a submodule
-            "G"
+            file_status = "G"
           else
-            file_has_conflict_markers(path_for(filename)) ? "C" : "G"
+            file_status = file_has_conflict_markers(path_for(filename)) ? "C" : "G"
           end
-        else
-          "?"
         end
-        filename = $1.gsub(/(\\\d{3})+/) { $&.scan(/\d{3}/).map { |str| str.oct }.pack("c*") } if filename =~ /^"(.*)"$/
-        file_statuses[filename] ||= status
-      end
 
+        file_statuses[file_name] = file_status
+      end
     end
+
     file_statuses
   end
 
