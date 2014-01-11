@@ -201,7 +201,7 @@ module SCM
     end
     
     def initial_commit_pending?
-      /^# Initial commit$/.match(command("status")) ? true : false
+      /^(# )?Initial commit$/.match(command("status")) ? true : false
     end
     
     def status(file_or_dir = nil, options = {})
