@@ -201,11 +201,11 @@ module SCM
     end
     
     def initial_commit_pending?
-      /^# Initial commit$/.match(command("status")) ? true : false
+      /^(# )?Initial commit$/.match(command("status")) ? true : false
     end
     
     def status(file_or_dir = nil, options = {})
-      results = parse_status(command("status"))
+      results = parse_status(command("status", "--porcelain"))
       return results if file_or_dir.nil?
       results.select do |status|
         Array(file_or_dir).find { |e| status[:path] =~ /^#{Regexp.escape(e)}(\/|$)/ }
