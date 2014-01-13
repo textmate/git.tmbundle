@@ -33,6 +33,9 @@ module Parsers
           end
         end
 
+        # Decode escaped characters in the file list parser.
+        file_name = $1.gsub(/(\\\d{3})+/) { $&.scan(/\d{3}/).map { |str| str.oct }.pack("c*") } if file_name =~ /^"(.*)"$/
+
         file_statuses[file_name] = file_status
       end
     end
