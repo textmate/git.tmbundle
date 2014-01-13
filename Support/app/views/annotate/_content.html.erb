@@ -48,7 +48,7 @@ EOF
   </thead>
   <tbody>
     <% for display in formatted_annotations %>
-      <tr>
+      <tr id="line-<%= display[:ln] %>">
       
         <td class="line-numbers">
           <% if display[:rev]=="…" %>

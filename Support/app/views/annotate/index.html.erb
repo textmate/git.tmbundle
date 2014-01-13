@@ -7,7 +7,28 @@
     {
       $('content').update( dispatch({controller: 'annotate', action: "update", revision: revision}) );
     }
-  
+
+    function scroll_to_proper_position()
+    {
+      var line_number = <%= selected_line_range.min %>;
+      var info_row = $('line-' + line_number);
+
+      // Find row with last commit info
+      for (i = parseInt(line_number); i >= 1; i--) {
+        if (info_row.innerText.substr(0, 8).match(/[a-zA-Z0-9\-]{8}/)) { // Match revision hash or the word -current
+          break;
+        } else {
+          info_row = $('line-' + i);
+        }
+      }
+
+      var position = info_row.getBoundingClientRect().top;
+      var offset_from_navigate_box = document.getElementById('navigate-box').getBoundingClientRect().bottom;
+      var offset_from_border = 2
+
+      window.scroll(0, position - offset_from_navigate_box - offset_from_border);
+    }
+
     function keypress_listener(e) 
     {
       // if (e.keyCode==Event.KEY_LEFT)
@@ -59,5 +80,7 @@
     catch (e) {
       $('debug').update(e)
     }
+
+    scroll_to_proper_position();
   </script>
 <% end %>
