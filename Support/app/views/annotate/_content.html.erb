@@ -2,9 +2,21 @@
   # puts annotations.inspect
   last_formatted_line = {}
 
+  range_min, range_max = selected_line_range
+
   formatted_annotations = annotations.map do |annotation|
     line_class = []
-    line_class << "selected" if ENV["TM_LINE_NUMBER"].to_i == annotation[:ln].to_i
+
+    if (range_min == range_max) && range_min == annotation[:ln].to_i
+      line_class << "selected"
+    elsif range_min == annotation[:ln].to_i
+      line_class << "ranged-top"
+    elsif range_max == annotation[:ln].to_i
+      line_class << "ranged-bottom"
+    elsif annotation[:ln].to_i.between?(range_min, range_max)
+      line_class << "ranged-middle"
+    end
+
     line_class << "ins" if annotation[:rev] == "-current-" || annotation[:rev] == revision
     line_class = line_class * " "
     formatted_line = {
@@ -48,7 +60,7 @@ EOF
   </thead>
   <tbody>
     <% for display in formatted_annotations %>
-      <tr>
+      <tr id="line-<%= display[:ln] %>">
       
         <td class="line-numbers">
           <% if display[:rev]=="…" %>
