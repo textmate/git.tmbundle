@@ -26,10 +26,10 @@ module Parsers
         # Handle merge conflicts and submodules
         if $1 == "U" || $2 == "U" || ($1 == "D" && $2 == "D") || ($1 == "A" && $1 == "A")
           # do a quick check to see if the merge is resolved
-          if File.directory?(path_for(filename)) # it's a submodule
+          if File.directory?(path_for(file_name)) # it's a submodule
             file_status = "G"
           else
-            file_status = file_has_conflict_markers(path_for(filename)) ? "C" : "G"
+            file_status = file_has_conflict_markers(path_for(file_name)) ? "C" : "G"
           end
         end
 
