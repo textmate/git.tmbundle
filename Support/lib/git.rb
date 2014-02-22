@@ -77,7 +77,11 @@ module SCM
     
     # The absolute path to working copy
     def path
-      @path ||= File.expand_path('..', git_dir(paths.first))
+      @path ||= %x{
+        cd #{e_sh dir_part(paths.first)}
+        #{git} rev-parse --show-toplevel;
+        cd - > /dev/null;
+      }.chomp
     end
     
     def root
