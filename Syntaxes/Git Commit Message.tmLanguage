@@ -57,6 +57,10 @@
 						</dict>
 					</array>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment</string>
+				</dict>
 			</array>
 		</dict>
 		<dict>
@@ -77,6 +81,32 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>comment</key>
+		<dict>
+			<key>begin</key>
+			<string>(^[ \t]+)?(?=#)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.whitespace.comment.leading.git-commit</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>comment.line.number-sign.git-commit</string>
+			<key>end</key>
+			<string>(?!\G)^</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\G#</string>
+					<key>name</key>
+					<string>punctuation.definition.comment.git-commit</string>
+				</dict>
+			</array>
+		</dict>
 		<key>metadata</key>
 		<dict>
 			<key>patterns</key>
@@ -134,29 +164,8 @@
 					</array>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(^[ \t]+)?(?=#)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.whitespace.comment.leading.git-commit</string>
-						</dict>
-					</dict>
-					<key>contentName</key>
-					<string>comment.line.number-sign.git-commit</string>
-					<key>end</key>
-					<string>(?!\G)^</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>\G#</string>
-							<key>name</key>
-							<string>punctuation.definition.comment.git-commit</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#comment</string>
 				</dict>
 				<dict>
 					<key>begin</key>
