@@ -65,7 +65,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?=# Please enter the commit message)</string>
+			<string>^(?=# Please enter the commit message)</string>
 			<key>end</key>
 			<string>\z</string>
 			<key>name</key>
@@ -84,28 +84,19 @@
 		<key>comment</key>
 		<dict>
 			<key>begin</key>
-			<string>(^[ \t]+)?(?=#)</string>
-			<key>beginCaptures</key>
+			<string>^(#)</string>
+			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.whitespace.comment.leading.git-commit</string>
-				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>comment.line.number-sign.git-commit</string>
-			<key>end</key>
-			<string>(?!\G)^</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>\G#</string>
-					<key>name</key>
 					<string>punctuation.definition.comment.git-commit</string>
 				</dict>
-			</array>
+			</dict>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>comment.line.number-sign.git-commit</string>
 		</dict>
 		<key>metadata</key>
 		<dict>
