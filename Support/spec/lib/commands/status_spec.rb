@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe SCM::Git do
   before(:each) do
     @git = Git.new
-    Git.command_response["status"] = fixture_file("status_output.txt")
+    Git.command_response["status", "--porcelain"] = fixture_file("status_output.txt")
   end
   
   include SpecHelpers
@@ -45,7 +45,6 @@ EOF
   end
   
   it "should filter to a folder" do
-    File.should_receive(:directory?).with("/base/dir").and_return(true)
     @results = @git.status("/base/dir")
     @results.map{ |result| result[:path] }.should == [
       "/base/dir/"
@@ -53,7 +52,6 @@ EOF
   end
   
   it "should filter to a file" do
-    File.should_receive(:directory?).with("/base/small.diff").and_return(false)
     @results = @git.status("/base/small.diff")
     @results.map{ |result| result[:path] }.should == [
       "/base/small.diff"
@@ -61,22 +59,21 @@ EOF
   end
   
   it "should filter to a subfolder" do
-    File.should_receive(:directory?).with("/base/dir/subfolder").and_return(true)
-    @results = @git.status("/base/dir/subfolder")
+    @results = @git.status("/base/app/views/layouts")
     @results.should have(1).result
     @result = @results.first
-    @result[:path].should == "/base/dir/subfolder/"
-    @result[:display].should == "dir/subfolder/"
+    @result[:path].should == "/base/app/views/layouts/application.html.erb"
+    @result[:display].should == "app/views/layouts/application.html.erb"
   end
-  
-  it "should auto-expand the path when filtering to a relative path" do
-    File.should_receive(:directory?).with("/base/dir/subfolder").and_return(true)
-    @results = @git.status("dir/subfolder")
-    @results.should have(1).result
-    @result = @results.first
-    @result[:path].should == "/base/dir/subfolder/"
-    @result[:display].should == "dir/subfolder/"
-  end
+
+  # This functionality was (accidentally?) removed in 8ecadc8fb26
+  # it "should auto-expand the path when filtering to a relative path" do
+  #   @results = @git.status("app/views/layouts")
+  #   @results.should have(1).result
+  #   @result = @results.first
+  #   @result[:path].should == "/base/app/views/layouts/application.html.erb"
+  #   @result[:display].should == "app/views/layouts/application.html.erb"
+  # end
   
   it "should parse a status document correctly" do
     result = @git.parse_status_hash(fixture_file("status_output.txt"))

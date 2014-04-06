@@ -6,7 +6,7 @@ describe CommitController do
     Git.reset_mock!
     @controller = CommitController.singleton_new
     @git = Git.singleton_new
-    Git.command_response["status"] = fixture_file("status_output.txt")
+    Git.command_response["status", "--porcelain"] = fixture_file("status_output.txt")
   end
   
   after(:each) do

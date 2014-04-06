@@ -7,9 +7,8 @@ describe SCM::Git do
   include SpecHelpers
   
   describe "when parsing a annotate" do
-    TEST_ANNOTATE = File.read("#{FIXTURES_DIR}/annotate.txt")
     before(:each) do
-      @lines = @annotate.parse_annotation(TEST_ANNOTATE)
+      @lines = @annotate.parse_annotation(File.read("#{FIXTURES_DIR}/annotate.txt"))
     end
     
     it "should parse out all items" do
