@@ -83,8 +83,8 @@ class Git
     StringIO.new(command(*args))
   end
   
-  def git_dir(file_or_dir)
-    "/base/"
+  def git_dir(file_or_dir = paths.first)
+    "/base/.git"
   end
   
   def paths(*args)
