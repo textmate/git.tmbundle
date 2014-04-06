@@ -22,7 +22,7 @@ describe "deleting branches remotely recognizes success and failure responses", 
     Git.command_response["push", "origin", ":task"] = @success_delete_response
 
     TextMate::UI.should_receive(:alert).with(:informational, "Success", "Deleted remote branch origin/task.", "OK").and_return("No")
-    dispatch(:controller => "branch", :action => "delete")
+    capture_output { dispatch(:controller => "branch", :action => "delete") }
 
     Git.commands_ran.should include(["push", "origin", ":task"])
   end
@@ -31,16 +31,24 @@ describe "deleting branches remotely recognizes success and failure responses", 
     @set_branch_to_choose.call("origin/task")
     Git.command_response["push", "origin", ":task"] = @failure_delete_response
     TextMate::UI.should_receive(:alert).with(:warning, "Delete branch failed!", "The source 'origin' reported that the branch 'task' does not exist.\nTry running the prune remote stale branches command?", "OK")
-    dispatch(:controller => "branch", :action => "delete")
+    capture_output { dispatch(:controller => "branch", :action => "delete") }
   end
 end
 
 describe BranchController do
   before(:each) do
     @git = Git.singleton_new
+    @git.branch.stub(:current_name).and_return("master")
     Git.reset_mock!
-    Git.command_response["branch", "-r"] = "  origin/master\n  origin/release\n  origin/task"
-    Git.command_response["branch"] = "* master\n  task"
+    Git.command_response["for-each-ref", "refs/heads"] = <<EOF
+7dd2ef4bbb97536b1c4a014d87eafbb4b41030e8 commit  refs/heads/master
+59514d9864d25aa8250aea90f316638529b97801 commit  refs/heads/task
+EOF
+    Git.command_response["for-each-ref", "refs/remotes"] = <<EOF
+7dd2ef4bbb97536b1c4a014d87eafbb4b41030e8 commit  refs/remotes/origin/master
+59514d9864d25aa8250aea90f316638529b97801 commit  refs/remotes/origin/release
+59514d9864d25aa8250aea90f316638529b97801 commit  refs/remotes/origin/task
+EOF
   end
   
   include SpecHelpers
@@ -67,7 +75,9 @@ describe BranchController do
         @set_branch_to_choose.call("task")
         Git.command_response["checkout", "task"] = %{fatal: you need to resolve your current index first\n}
         TextMate::UI.should_receive(:alert).with(:warning, "Error - couldn't switch", "Git said:\nfatal: you need to resolve your current index first\n\nYou're probably in the middle of a conflicted merge, and need to commit", "OK").and_return("Yes")
-        dispatch(:controller => "branch", :action => "switch")
+        capture_output do
+          dispatch(:controller => "branch", :action => "switch")
+        end
       end
       
       it "should ask you if you'd like to force when uncommitted files exist" do
@@ -92,7 +102,7 @@ EOF
           @set_branch_to_choose.call("task")
           
           git = Git.singleton_new
-          @submodule = stub("submodule", :cache => true, :restore => true, :path => "path/to/module", :modified? => false)
+          @submodule = stub("submodule", :cache => true, :restore => true, :path => "path/to/module", :cached? => true, :cloned? => true, :modified? => false)
           git.submodule.should_receive(:all).any_number_of_times.and_return([@submodule])
           output = capture_output do
             dispatch(:controller => "branch", :action => "switch")
@@ -124,7 +134,9 @@ EOF
         @set_branch_to_choose.call("origin/release")
         TextMate::UI.should_receive(:request_string).once.with(@get_branch_name_params).and_return("task")
         TextMate::UI.should_receive(:alert).with(:warning, "Branch name already taken!", "The branch name 'task' is already in use.\nVery likely this is the branch you want to work on.\nIf not, pick another name.", "Pick another name", "Switch to it", "Cancel").and_return("Cancel")
-        dispatch(:controller => "branch", :action => "switch")
+        capture_output do
+          dispatch(:controller => "branch", :action => "switch")
+        end
       end
     end
     

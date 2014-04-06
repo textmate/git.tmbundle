@@ -136,7 +136,7 @@ module SCM
       end
     end
 
-    def git_dir(file_or_dir)
+    def git_dir(file_or_dir = paths.first)
       file = %x{
         cd #{e_sh dir_part(file_or_dir)}
         #{git} rev-parse --git-dir;

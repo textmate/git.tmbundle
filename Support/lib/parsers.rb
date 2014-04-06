@@ -24,7 +24,7 @@ module Parsers
         file_name    = $4
 
         # Handle merge conflicts and submodules
-        if $1 == "U" || $2 == "U" || ($1 == "D" && $2 == "D") || ($1 == "A" && $1 == "A")
+        if $1 == "U" || $2 == "U" || ($1 == "D" && $2 == "D") || ($1 == "A" && $2 == "A")
           # do a quick check to see if the merge is resolved
           if File.directory?(path_for(file_name)) # it's a submodule
             file_status = "G"

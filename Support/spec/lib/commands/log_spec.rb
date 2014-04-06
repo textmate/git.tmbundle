@@ -19,7 +19,7 @@ describe Git do
       result = @entries.first
       result[:rev].should == "2762e1264c439dced7f05eacd33fc56499b8b779"
       result[:author].should == "Tim Harper <timcharper@domain.com>"
-      result[:date].should == Time.parse("Mon Feb 4 07:51:25 -0700 2008")
+      result[:date].should == Time.parse("Mon Feb 4 07:51:25 2008 -0700")
       result[:msg].should == %Q{bugfix - diff was not parsing the index line sometimes because it varies on deleted files
 
 made more failproof}

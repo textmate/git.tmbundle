@@ -82,7 +82,7 @@ describe RemoteController do
       end
       
       it "should run all git commands" do
-        Git.commands_ran.should == [["push", "origin", "master"], ["log", "-n", 5, "865f920..f9ca10d", "."]]
+        Git.commands_ran.should == [["push", "origin", "master"], ["log", "--date=default", "--format=medium", "-n", 5, "865f920..f9ca10d", "."]]
       end
       
       it "should output log with diffs" do
