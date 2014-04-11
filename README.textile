@@ -1,29 +1,17 @@
-h1. The Git Textmate Bundle.
-
-Release 1.8.0 [2009-07-31]
-
-"James Conroy-Finn":http://github.com/jcf is the new maintainer of this bundle. If you have cloned the bundle from Tim Harper's repository, please update your git config settings to point to his repository:
-
-<pre>
-  cd ~/Library/Application\ Support/TextMate/Bundles/Git.tmbundle
-  git config remote.origin.url git://github.com/jcf/git-tmbundle.git
-</pre>
-
-Thanks -- the management
+h1. The Git Textmate Bundle
 
 h2. Installation
 
 You can install this bundle in TextMate by opening the preferences and going to the bundles tab. After installation it will be automatically updated for you.
 
-* In the TextMate preferences, Variables, set the TM_GIT variable to point to your installation of git (ie <code>/usr/local/bin/git</code>)
 * Many shortcuts are available from the SCM shortcut ⌘Y  Subversion commands are ⌘⌥G.  Less frequent commands are accessed via the menu.
 
 h2. Support
 
-* "Issue tracker":http://github.com/jcf/git-tmbundle/issues
-* "Repository":http://github.com/jcf/git-tmbundle
+* "Issue tracker":https://github.com/textmate/git.tmbundle/issues
+* "Repository":https://github.com/textmate/git.tmbundle
 
-The "Mailing list":http://groups.google.com/group/git-tmbundle has now been closed. Please feel free to report issues using the "Issue tracker":http://github.com/jcf/git-tmbundle/issues.
+The "Mailing list":http://groups.google.com/group/git-tmbundle has now been closed. Please feel free to report issues using the "Issue tracker":https://github.com/textmate/git.tmbundle/issues.
 
 h2. Theme notes:
 
@@ -36,12 +24,9 @@ The warning scope triggers when the first line exceeds 50 characters; the error 
 
 h2. Who:
 
-h3. Maintainer, Lead Developer:
-
-* January 2010 - present: "James Conroy-Finn":http://jamesconroyfinn.com/
-
 h3. Previous Maintainers
 
+* January 2010 - 2012: "James Conroy-Finn":http://jamesconroyfinn.com/
 * January 2008 - December 2009: "Tim Harper":http://tim.theenchanter.com/ (with "Lead Media Partners":http://leadmediapartners.com).
 
 h2. Git-tmbundle superstars
