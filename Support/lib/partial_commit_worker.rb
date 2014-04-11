@@ -40,7 +40,7 @@ module PartialCommitWorker
       files, statuses = split_file_statuses
       
       res = %x{cd "#{git.path}" && #{e_sh CW}                 \
-        --diff-cmd   '#{git.git},diff'        \
+        --diff-cmd   '#{git.git},diff,HEAD,--'        \
         --action-cmd "M,D:Revert,#{status_helper_tool},revert" \
         --action-cmd "?:Delete,#{status_helper_tool},delete" \
         --status #{statuses.join(':')}       \
