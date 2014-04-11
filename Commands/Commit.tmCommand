@@ -8,7 +8,6 @@
 	<string>#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
 
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
-ENV.delete('TM_DOCUMENT_UUID') # Fix for mate v2.5
 dispatch(:controller =&gt; "commit")</string>
 	<key>input</key>
 	<string>none</string>
