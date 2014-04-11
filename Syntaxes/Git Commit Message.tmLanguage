@@ -17,49 +17,82 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>\A(?!#)</string>
+			<string>\A(?!# Please enter the commit message)</string>
 			<key>end</key>
-			<string>(?=# Please enter the commit message)</string>
+			<string>^(?=# Please enter the commit message)</string>
 			<key>name</key>
 			<string>meta.scope.message.git-commit</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\G</string>
+					<string>\A(?=#)</string>
 					<key>end</key>
-					<string>^(?!\G)</string>
+					<string>^(?!#)</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
-								<dict>
-									<key>name</key>
-									<string>keyword.other.$2.git-commit</string>
-								</dict>
-							</dict>
-							<key>match</key>
-							<string>\G((fixup|squash)!)\s*</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>.{66,}$</string>
-							<key>name</key>
-							<string>invalid.illegal.line-too-long.git-commit</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>.{51,}$</string>
-							<key>name</key>
-							<string>invalid.deprecated.line-too-long.git-commit</string>
+							<key>include</key>
+							<string>#comment</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#comment</string>
+					<key>begin</key>
+					<string>^(?!# Please enter the commit message)</string>
+					<key>end</key>
+					<string>^(?=# Please enter the commit message)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\G</string>
+							<key>end</key>
+							<string>^(?!\G)</string>
+							<key>name</key>
+							<string>meta.scope.subject.git-commit</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>captures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.other.$2.git-commit</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>\G((fixup|squash)!)\s*</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>.{66,}$</string>
+									<key>name</key>
+									<string>invalid.illegal.line-too-long.git-commit</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>.{51,}$</string>
+									<key>name</key>
+									<string>invalid.deprecated.line-too-long.git-commit</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>^(?!# Please enter the commit message)</string>
+							<key>end</key>
+							<string>^(?=# Please enter the commit message)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#comment</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
