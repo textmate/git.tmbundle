@@ -40,6 +40,8 @@ class CommitController < ApplicationController
       false
     rescue PartialCommitWorker::NothingToCommitException
       puts(git.clean_directory? ? "Working directory is clean (nothing to commit)" : "No changes to commit within the current scope. (Try selecting the root folder in the project drawer?)")
+    rescue PartialCommitWorker::NothingToAmendException
+      puts "Nothing to amend."
     rescue PartialCommitWorker::CommitCanceledException
       suppress_output
     end
