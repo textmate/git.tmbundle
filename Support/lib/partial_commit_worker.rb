@@ -42,8 +42,8 @@ module PartialCommitWorker
       res << "cd \"#{git.path}\" && \"$TM_SCM_COMMIT_WINDOW\""
       res << " --log #{Shellwords.escape(git.log(:limit => 1).first[:msg])}" if amend?
       res << " --diff-cmd '#{git.git},diff,HEAD,--'"
-      res << " --action-cmd \"M,D:Revert,#{status_helper_tool},revert\""
-      res << " --action-cmd \"?:Delete,#{status_helper_tool},delete\""
+      res << " --action-cmd 'M,D:${TM_DISPLAYNAME:?Revert “${TM_DISPLAYNAME}”:Revert},#{status_helper_tool},revert'"
+      res << " --action-cmd '?:${TM_DISPLAYNAME:?Delete “${TM_DISPLAYNAME}”:Delete},#{status_helper_tool},delete'"
       res << " --status #{statuses.join(':')}" if !amend? || (amend? && !file_candidates.empty?)
       res << " #{files.map{ |f| e_sh(f) }.join(' ')} 2>/dev/console"
 
