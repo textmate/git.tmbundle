@@ -32,17 +32,16 @@ class CommitController < ApplicationController
 
   protected
     def run_partial_commit
+      puts "<h2>#{commit_worker.title}…</h2>"
       result = commit_worker.run
       render "_commit_result", :locals => result if result
     rescue PartialCommitWorker::NotOnBranchException
       render "not_on_a_branch"
       false
     rescue PartialCommitWorker::NothingToCommitException
-      puts "<h2>#{commit_worker.title}</h2>"
       puts(git.clean_directory? ? "Working directory is clean (nothing to commit)" : "No changes to commit within the current scope. (Try selecting the root folder in the project drawer?)")
     rescue PartialCommitWorker::CommitCanceledException
-      puts "<h2>#{commit_worker.title}</h2>"
-      puts "<strong>Canceled</strong>"
+      suppress_output
     end
 
     def commit_worker
