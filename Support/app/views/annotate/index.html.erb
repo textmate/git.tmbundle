@@ -5,7 +5,8 @@
   <script type='text/javascript'>
     function show_annotation(revision)
     {
-      $('content').update( dispatch({controller: 'annotate', action: "update", revision: revision}) );
+      var filepath = document.querySelector('option[value="' + revision + '"]').readAttribute('data-filepath');
+      $('content').update( dispatch({controller: 'annotate', action: "update", revision: revision, filepath: filepath}) );
     }
 
     function scroll_to_proper_position()
