@@ -15,7 +15,7 @@
       end
       
       le_str = [short_rev(le[:rev]), relative_date(le[:date]), le[:author], msg].compact.join(' - ')
-      [le_str, short_rev(le[:rev])]
+      [le_str, short_rev(le[:rev]), le[:filepath]]
     end
     
     select_box( "rev",

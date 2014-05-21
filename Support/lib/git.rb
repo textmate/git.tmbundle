@@ -309,9 +309,10 @@ module SCM
     
     def annotate(file_path, revision = nil)
       file = make_local_path(file_path)
-      args = [file]
-      args << revision unless revision.nil? || revision.empty?
-      output = command("annotate", *args)
+      args = []
+      args += ["--follow", revision, "--"] unless revision.nil? || revision.empty?
+      args << file
+      output = command("blame", *args)
       if output.match(/^fatal:/)
         puts output 
         return nil
@@ -375,6 +376,8 @@ module SCM
       params = ["log", "--date=default", "--format=medium"]
       params += ["-n", options[:limit]] if options[:limit]
       params << "-p" if options[:with_log]
+      params << "--follow" if options[:follow]
+      params << "--name-only" if options[:name]
       params << options[:branch]  if options[:branch]
       
       lr = get_range_arg(options)

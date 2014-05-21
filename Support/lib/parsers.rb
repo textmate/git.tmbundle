@@ -79,6 +79,39 @@ module Parsers
     result
   end
 
+  def parse_blame(input)
+    require 'time.rb'
+    require 'date.rb'
+
+    output = []
+
+    match_rev      = /([0-9a-f]{8})/
+    match_filepath = /(\S+)/
+    match_author   = /(\S+(?: \S+)*)/
+    match_date     = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} -\d{4})/
+    match_ln       = /(\d+)/
+
+    matcher = /#{match_rev}(?: #{match_filepath})?\s+\(#{match_author}\s+#{match_date}\s+#{match_ln}\)(.*)$/i
+
+    input.split("\n").each do |line|
+      if matcher.match(line)
+        rev,filepath,author,date,ln,text = $1,$2,$3,$4,$5,$6
+        nc = /^0+$/.match(rev)
+        output << {
+          :rev => nc ? "-current-" : rev,
+          :filepath => filepath,
+          :author => nc ? "-none-" : author.strip,
+          :date => nc ? "-pending-" : Time.parse(date),
+          :ln => ln.to_i,
+          :text => text
+        }
+      else
+        raise "didnt recognize line #{line}"
+      end
+    end
+    output
+  end
+
   def parse_annotation(input)
     require 'time.rb'
     require 'date.rb'
@@ -136,6 +169,8 @@ module Parsers
         current[:msg] = block.gsub(/^ {4}/, "")
       when /^diff /
         current[:diff] = parse_diff(block)
+      else
+        current[:filepath] = block.strip
       end
     end
     output
