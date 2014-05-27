@@ -85,7 +85,7 @@ module Parsers
 
     output = []
 
-    match_rev      = /([0-9a-f]{8})/
+    match_rev      = /([0-9a-f]+)/
     match_filepath = /(\S+)/
     match_author   = /(\S+(?: \S+)*)/
     match_date     = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} -\d{4})/
