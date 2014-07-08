@@ -28,9 +28,9 @@ protected
   def options_for_select(select_options = [], selected_value = nil)
     output = ""
   
-    select_options.each do |name, val|
+    select_options.each do |name, val, filepath|
       selected = (val == selected_value) ? "selected='true'" : ""
-      output << "<option value='#{val}' #{selected}>#{htmlize(name)}</option>"
+      output << "<option value='#{val}' #{selected} data-filepath='#{filepath}'>#{htmlize(name)}</option>"
     end
   
     output
