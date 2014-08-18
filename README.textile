@@ -39,20 +39,4 @@ h3. Major Contributions
 * <b>Sam Granieri</b> - GitK, Many of the git-svn commands, Git initialize repository command, menu layouting, create-tag.
 * <b>Johan S&oslash;rensen</b> - Contributing the CSS styling.
 
-h3. Patches, etc
-
-* <b>Tommi Asiala</b> - README file submission
-* <b>Lawrence Pit</b> - Performance Enhancements
-* <b>Jay Soffian</b> - Bug report with patch (missing environment variables)
-* <b>Humberto Di&oacute;genes</b> - Git-svn fetch command
-* <b>Lee Marlow</b>
-* <b>Geoff Cheshire</b> - Textile'd the README to make it look good on GitHub
-* <b>Martin Kühl</b> - Patch to allow committing into a git repository that's not the project root
-* <b>Diego Barros</b> - new config options, usability improvements
-* <b>Thomas Aylott</b> - Git commit language folding
-* <b>Michael Sheets</b> - Usability improvements
-* <b>Henrik Nyh</b> - Git 1.6 commit message compatibility and spelling corrections
-* <b>Slava Kravchenko</b> - Ruby 1.9 compatibility
-* <b>Adam Vandenberg</b> - First-line-too-long support
-
 Please feel free to send a pull request if you've added any functionality to this bundle that you think the rest of the git-loving, TextMate-using world would appreciate!
