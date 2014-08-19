@@ -91,7 +91,7 @@ module Parsers
     match_date     = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4})/
     match_ln       = /(\d+)/
 
-    matcher = /#{match_rev}(?: #{match_filepath})?\s+\(#{match_author}\s+#{match_date}\s+#{match_ln}\)(.*)$/i
+    matcher = /#{match_rev}(?: #{match_filepath})?\s+\(#{match_author}\s+#{match_date}\s+#{match_ln}\) (.*)$/i
 
     input.split("\n").each do |line|
       if matcher.match(line)
