@@ -317,7 +317,7 @@ module SCM
         puts output 
         return nil
       end
-      parse_blame(output)
+      parse_annotation(output)
     end
     
     def describe(revision, options = {})
