@@ -2,6 +2,7 @@
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
 require "#{ENV["TM_SUPPORT_PATH"]}/lib/osx/plist"
 require "#{ENV["TM_SUPPORT_PATH"]}/lib/progress"
+require "#{ENV["TM_SUPPORT_PATH"]}/lib/tm/detach"
 require LIB_ROOT + '/date_helpers.rb'
 location = ENV["TM_BUNDLE_SUPPORT"]
 $nib = "#{location}/nibs/RevisionSelector.nib"
@@ -54,8 +55,8 @@ class LogController < ApplicationController
       abort
     end
     tmp_file = git.with_path(params[:git_path]).show_to_tmp_file(file_path, revision)
-    fork do
-      tm_open(tmp_file, :line => line, :wait => true)
+    TextMate.detach do
+      tm_open(tmp_file, :line => line)
       File.delete(tmp_file)
     end
   end
