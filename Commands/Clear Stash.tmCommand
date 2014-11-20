@@ -14,7 +14,7 @@ dispatch :controller =&gt; "stash", :action =&gt; "clear"
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>name</key>
-	<string> Clear Stash…</string>
+	<string> Clear Stash…</string>
 	<key>outputCaret</key>
 	<string>afterOutput</string>
 	<key>outputFormat</key>
