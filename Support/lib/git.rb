@@ -267,6 +267,7 @@ module SCM
     def push(remote, options = {})
       options = options.dup
       args = ["push", remote]
+      args << "--force" if options[:force]
       args << options.delete(:branch) if options[:branch]
       args << options.delete(:tag) if options[:tag]
 

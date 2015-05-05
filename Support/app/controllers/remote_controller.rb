@@ -74,15 +74,20 @@ class RemoteController < ApplicationController
   end
   
   def push
+    force = !!params[:force]
+
     if (branch = git.branch.current).nil?
       puts "You can't push the current branch while not being on a branch (and you are not on a branch).  Please switch to a branch, and try again."
       output_show_html and return
     end
-    
+
+    title = "Push"
+    title = "Force "+title if force
+
     current_name = branch.name
-    for_each_selected_remote(:title => "Push", :prompt => "Select a remote source to push the branch #{current_name} to:", :items => git.remote.names) do |remote_name|
-      puts "<p>Pushing to remote source '#{remote_name}' for branch '#{current_name}'</p>"
-      display_push_output(git, run_push(git, remote_name, :branch => current_name))
+    for_each_selected_remote(:title => title, :prompt => "Select a remote source to push the branch #{current_name} to:", :items => git.remote.names) do |remote_name|
+      puts "<p>#{title}ing to remote source '#{remote_name}' for branch '#{current_name}'</p>"
+      display_push_output(git, run_push(git, remote_name, {:branch => current_name, :force => force}))
       
       git.submodule.all.each do |submodule|
         next unless (current_branch = submodule.git.branch.current) && (current_branch.tracking_branch_name)
