@@ -406,7 +406,11 @@ module SCM
       return self if path.blank?
       @gits[path] = Git.new(:path => path_for(path), :parent => self)
     end
-    
+
+    def rebase_in_progress?
+      File.exist?(File.join(path, '.git/rebase-merge')) || File.exist?(File.join(path, '.git/rebase-apply'))
+    end
+
     protected
       def get_range_arg(options = {})
         return options[:since] if options[:since]
