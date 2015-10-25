@@ -12,6 +12,7 @@ module PartialCommitWorker
   end
 
   class Base
+    COMMIT_CONTINUE = 'TM_SCM_COMMIT_CONTINUE=1'
     attr_reader :git
 
     def initialize(git)
@@ -45,6 +46,8 @@ module PartialCommitWorker
       res << " --action-cmd 'M,D:${TM_DISPLAYNAME:?Revert “${TM_DISPLAYNAME}”:Revert},#{status_helper_tool},revert'"
       res << " --action-cmd '?:${TM_DISPLAYNAME:?Delete “${TM_DISPLAYNAME}”:Delete},#{status_helper_tool},delete'"
       res << " --status #{statuses.join(':')}" if !amend? || (amend? && !file_candidates.empty?)
+      res << " --show-continue-button" if git.rebase_in_progress?
+      res << " --commit-button-title Amend" if amend?
       res << " #{files.map{ |f| e_sh(f) }.join(' ')} 2>/dev/console"
 
       res
@@ -54,16 +57,19 @@ module PartialCommitWorker
       res = %x{#{tm_scm_commit_window}}
       res = Shellwords.shellwords(res)
 
+      continue = res.last == COMMIT_CONTINUE
+      res = res[0 ... -1] if continue
+
       canceled = ($? != 0)
       msg = res[1]
       files = res[2..-1]
-      return canceled, msg, files
+      return canceled, msg, files, continue
     end
 
     def show_commit_dialog
-      canceled, msg, files = exec_commit_dialog
+      canceled, msg, files, continue = exec_commit_dialog
       raise CommitCanceledException if canceled
-      [msg, files]
+      [msg, files, continue]
     end
 
     def file_candidates
@@ -81,9 +87,10 @@ module PartialCommitWorker
         raise NothingToAmendException if nothing_to_amend?
       end
 
-      msg, files = show_commit_dialog
+      msg, files, continue = show_commit_dialog
       git.auto_add_rm(files)
       res = git.commit(msg, files, :amend => amend?)
+      git.command('rebase', '--continue') if continue
       { :files => files, :message => msg, :result => res}
     end
 
@@ -121,8 +128,8 @@ module PartialCommitWorker
     end
 
     def show_commit_dialog(*args)
-      msg, files = super(*args)
-      [msg, files]
+      msg, files, continue = super(*args)
+      [msg, files, continue]
     end
 
     def file_candidates
