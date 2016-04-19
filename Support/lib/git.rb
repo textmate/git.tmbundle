@@ -276,7 +276,7 @@ module SCM
 
     def pull(remote, remote_merge_branch = nil, callbacks = {})
       args = ["pull", remote]
-      args << remote_merge_branch.split('/').last if remote_merge_branch
+      args << remote_merge_branch.gsub(/\A#{remote}\//, '') if remote_merge_branch
       p = popen_command(*args)
       process_pull(p, callbacks)
     end
