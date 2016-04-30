@@ -43,6 +43,7 @@ describe BranchController do
     Git.command_response["for-each-ref", "refs/heads"] = <<EOF
 7dd2ef4bbb97536b1c4a014d87eafbb4b41030e8 commit  refs/heads/master
 59514d9864d25aa8250aea90f316638529b97801 commit  refs/heads/task
+59514d9864d25aa8250aea90f316638529b97801 commit  refs/heads/feature/task
 EOF
     Git.command_response["for-each-ref", "refs/remotes"] = <<EOF
 7dd2ef4bbb97536b1c4a014d87eafbb4b41030e8 commit  refs/remotes/origin/master
@@ -56,7 +57,7 @@ EOF
   describe "when switching branches" do
     before(:each) do
       @set_branch_to_choose = lambda { |response|
-        TextMate::UI.should_receive(:request_item).with({:prompt=>"Current branch is 'master'.\nSelect a new branch to switch to:", :items=>["master", "task", "origin/master", "origin/release", "origin/task"], :title=>"Switch to Branch", :force_pick => true}).and_return(response)
+        TextMate::UI.should_receive(:request_item).with({:prompt=>"Current branch is 'master'.\nSelect a new branch to switch to:", :items=>["master", "task", "feature/task", "origin/master", "origin/release", "origin/task"], :title=>"Switch to Branch", :force_pick => true}).and_return(response)
       }
     end
     
@@ -169,7 +170,7 @@ EOF
   describe "when deleting branches" do
     before(:each) do
       @set_branch_to_choose = lambda { |response|
-        TextMate::UI.should_receive(:request_item).with(:title => "Delete Branch", :prompt => "Select the branch to delete:", :items => ["master", "task", "origin/master", "origin/release", "origin/task"]).and_return(response)
+        TextMate::UI.should_receive(:request_item).with(:title => "Delete Branch", :prompt => "Select the branch to delete:", :items => ["master", "task", "feature/task", "origin/master", "origin/release", "origin/task"]).and_return(response)
       }
     end
     describe "locally" do
@@ -200,11 +201,18 @@ EOF
       describe "when branch is fully merged" do
         before(:each) do
           Git.command_response["branch", "-d", "task"] = "Deleted branch task."
+          Git.command_response["branch", "-d", "feature/task"] = "Deleted branch feature/task."
         end
       
         it "should delete" do
           @set_branch_to_choose.call("task")
           TextMate::UI.should_receive(:alert).with(:informational, "Success", "Deleted branch task.", "OK").and_return("No")
+          dispatch(:controller => "branch", :action => "delete")
+        end
+
+        it "should delete branch containing slash character" do
+          @set_branch_to_choose.call("feature/task")
+          TextMate::UI.should_receive(:alert).with(:informational, "Success", "Deleted branch feature/task.", "OK").and_return("No")
           dispatch(:controller => "branch", :action => "delete")
         end
       end

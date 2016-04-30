@@ -57,7 +57,7 @@ class BranchController < ApplicationController
       
       if remotes.include?(target)
         delete_remote(target)
-      elsif 
+      else
         delete_local(target)
       end
     end
@@ -109,7 +109,7 @@ class BranchController < ApplicationController
     end
   
     def delete_local(target)
-      result = git.branch.delete(target)
+      result = git.branch.delete(target, { :branch_type => :local })
       case result[:outcome]
       when :success
         TextMate::UI.alert(:informational, "Success", result[:output], 'OK') 
@@ -123,7 +123,7 @@ class BranchController < ApplicationController
           return false
         end
       else
-        TextMate::UI.alert(:warning, "Hmmm", "I didn't understand's git's response, perhaps you can make sense of it?\n#{result[:output].to_s}", 'Ok') 
+        TextMate::UI.alert(:warning, "Hmmm", "I didn't understand git's response, perhaps you can make sense of it?\n#{result[:output].to_s}", 'Ok')
         return false
       end
       true
@@ -131,7 +131,7 @@ class BranchController < ApplicationController
   
     def delete_remote(target)
       # detect remote
-      result = git.branch.delete(target)
+      result = git.branch.delete(target, { :branch_type => :remote })
       case result[:outcome]
       when :success
         TextMate::UI.alert(:informational, "Success", "Deleted remote branch #{target}.", "OK")
