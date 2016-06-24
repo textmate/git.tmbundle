@@ -67,7 +67,7 @@
 								</dict>
 								<dict>
 									<key>match</key>
-									<string>.{66,}$</string>
+									<string>.{73,}$</string>
 									<key>name</key>
 									<string>invalid.illegal.line-too-long.git-commit</string>
 								</dict>
