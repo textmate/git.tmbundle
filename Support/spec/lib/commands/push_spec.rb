@@ -10,8 +10,9 @@ describe Git do
     @push.version = "1.5.3"
   end
     
-  describe "standard push" do
-    TEST_INPUT = <<EOF
+  describe "standard push" do  
+    before(:each) do
+      @process_io = StringIO.new <<-EOF
 updating 'refs/heads/mybranch'
   from f0f27c95b7cdf4ca3b56ecb3c54ef3364133eb6a
   to   d8b368361ebdf2c51b78f7cfdae5c3044b23d189
@@ -33,9 +34,6 @@ Total 6 (delta 1), reused 0 (delta 0)
 refs/heads/satellite: 60a254470cd97af3668ed4d6405633af850139c6 -> 746fba2424e6b94570fc395c472805625ab2ed25
 refs/heads/mybranch: f0f27c95b7cdf4ca3b56ecb3c54ef3364133eb6a -> d8b368361ebdf2c51b78f7cfdae5c3044b23d189
 EOF
-  
-    before(:each) do
-      @process_io = StringIO.new(TEST_INPUT)
     end
   
     it "should call the status proc 6 times" do

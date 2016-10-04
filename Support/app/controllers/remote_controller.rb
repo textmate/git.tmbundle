@@ -116,7 +116,7 @@ class RemoteController < ApplicationController
 
       if TextMate::UI.alert(:warning, "Setup automerge for these branches?", "Would you like me to tell git to always merge:\n #{remote_branch_name} -> #{branch.name}?", 'Yes', 'No')  == "Yes"
         branch.remote_name = remote_name
-        branch.merge = "refs/heads/" + remote_branch_name.split("/").last
+        branch.merge = "refs/heads/" + remote_branch_name.gsub(/\A#{remote_name}\//, '')
       end
       remote_branch_name
     end

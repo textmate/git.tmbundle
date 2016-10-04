@@ -152,6 +152,15 @@ class ApplicationController
     ""
   end
   
+  def suppress_output
+    @output_buffer.string = ""
+    @capturing = true
+  end
+
+  def unsuppress_output
+    @capturing = false
+  end
+
   def output_discard
     $exit_status = EXIT_DISCARD
   end

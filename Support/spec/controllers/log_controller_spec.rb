@@ -10,7 +10,7 @@ describe LogController do
   
   describe "showing a log" do
     before(:each) do
-      Git.command_response["log", "-n", Git::Config::DEFAULT_LOG_LIMIT, "."] = fixture_file("log.txt")
+      Git.command_response["log", "--date=default", "--format=medium", "-n", Git::Config::DEFAULT_LOG_LIMIT, "."] = fixture_file("log.txt")
       @git.branch.stub!(:current).and_return branch_stub(:name => "refs/heads/master")
       @output = capture_output do
         dispatch :controller => "log", :action => "index", :path => "."

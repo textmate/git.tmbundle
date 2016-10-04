@@ -17,43 +17,80 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>\A(?!#)</string>
+			<string>\A(?!# Please enter the commit message)</string>
 			<key>end</key>
-			<string>(?=# Please enter the commit message)</string>
+			<string>^(?=# Please enter the commit message)</string>
 			<key>name</key>
 			<string>meta.scope.message.git-commit</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\G</string>
+					<string>\A(?=#)</string>
 					<key>end</key>
-					<string>^(?!\G)</string>
+					<string>^(?!#)</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>captures</key>
-							<dict>
-								<key>1</key>
+							<key>include</key>
+							<string>#comment</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>^(?!# Please enter the commit message)</string>
+					<key>end</key>
+					<string>^(?=# Please enter the commit message)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>\G</string>
+							<key>end</key>
+							<string>^(?!\G)</string>
+							<key>name</key>
+							<string>meta.scope.subject.git-commit</string>
+							<key>patterns</key>
+							<array>
 								<dict>
-									<key>name</key>
-									<string>keyword.other.$2.git-commit</string>
+									<key>captures</key>
+									<dict>
+										<key>1</key>
+										<dict>
+											<key>name</key>
+											<string>keyword.other.$2.git-commit</string>
+										</dict>
+									</dict>
+									<key>match</key>
+									<string>\G((fixup|squash)!)\s*</string>
 								</dict>
-							</dict>
-							<key>match</key>
-							<string>\G((fixup|squash)!)\s*</string>
+								<dict>
+									<key>match</key>
+									<string>.{73,}$</string>
+									<key>name</key>
+									<string>invalid.illegal.line-too-long.git-commit</string>
+								</dict>
+								<dict>
+									<key>match</key>
+									<string>.{51,}$</string>
+									<key>name</key>
+									<string>invalid.deprecated.line-too-long.git-commit</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
-							<key>match</key>
-							<string>.{66,}$</string>
-							<key>name</key>
-							<string>invalid.illegal.line-too-long.git-commit</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>.{51,}$</string>
-							<key>name</key>
-							<string>invalid.deprecated.line-too-long.git-commit</string>
+							<key>begin</key>
+							<string>^(?!# Please enter the commit message)</string>
+							<key>end</key>
+							<string>^(?=# Please enter the commit message)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#comment</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -61,7 +98,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?=# Please enter the commit message)</string>
+			<string>^(?=# Please enter the commit message)</string>
 			<key>end</key>
 			<string>\z</string>
 			<key>name</key>
@@ -77,6 +114,23 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>comment</key>
+		<dict>
+			<key>begin</key>
+			<string>^(#)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.git-commit</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>comment.line.number-sign.git-commit</string>
+		</dict>
 		<key>metadata</key>
 		<dict>
 			<key>patterns</key>
@@ -134,29 +188,8 @@
 					</array>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>(^[ \t]+)?(?=#)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.whitespace.comment.leading.git-commit</string>
-						</dict>
-					</dict>
-					<key>contentName</key>
-					<string>comment.line.number-sign.git-commit</string>
-					<key>end</key>
-					<string>(?!\G)^</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>match</key>
-							<string>\G#</string>
-							<key>name</key>
-							<string>punctuation.definition.comment.git-commit</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#comment</string>
 				</dict>
 				<dict>
 					<key>begin</key>

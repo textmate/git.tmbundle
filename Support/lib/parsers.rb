@@ -16,45 +16,30 @@ module Parsers
   end
 
   def parse_status_hash(input)
-    output = []
     file_statuses = {}
-    state = nil
-    input.split("\n").each do |line|
-      case line
-      when /^# Changes to be committed:/
-        state = :added
-      when /^# Changed but not updated:/
-        state = :modified
-      when /^# Untracked files:/
-        state = :untracked
-      when /^#\t(([a-z ]+): +){0,1}(.*?)(?: \([a-z ]+\))?$/
-        filename = $3
-        status_description = $2
-        status = case status_description
-        when "new file"
-          state == :added ? "A" : "?"
-        when "renamed"
-          filename = filename.split(/ +\-> +/).last
-          "R"
-        when "deleted"
-          "D"
-        when "modified"
-          "M"
-        when "unmerged", 'both modified'
-          # do a quick check to see if the merge is resolved
-          if File.directory?(path_for(filename)) # it's a submodule
-            "G"
-          else
-            file_has_conflict_markers(path_for(filename)) ? "C" : "G"
-          end
-        else
-          "?"
-        end
-        filename = $1.gsub(/(\\\d{3})+/) { $&.scan(/\d{3}/).map { |str| str.oct }.pack("c*") } if filename =~ /^"(.*)"$/
-        file_statuses[filename] ||= status
-      end
 
+    input.split("\n").each do |line|
+      if line =~ /^([A-Z|\?| ])([A-Z|\?| ]) (.* -> )?(.*)/
+        file_status = ($1 == " " ? $2 : $1)
+        file_name    = $4
+
+        # Handle merge conflicts and submodules
+        if $1 == "U" || $2 == "U" || ($1 == "D" && $2 == "D") || ($1 == "A" && $2 == "A")
+          # do a quick check to see if the merge is resolved
+          if File.directory?(path_for(file_name)) # it's a submodule
+            file_status = "G"
+          else
+            file_status = file_has_conflict_markers(path_for(file_name)) ? "C" : "G"
+          end
+        end
+
+        # Decode escaped characters in the file list parser.
+        file_name = $1.gsub(/(\\\d{3})+/) { $&.scan(/\d{3}/).map { |str| str.oct }.pack("c*") } if file_name =~ /^"(.*)"$/
+
+        file_statuses[file_name] = file_status
+      end
     end
+
     file_statuses
   end
 
@@ -99,14 +84,22 @@ module Parsers
     require 'date.rb'
 
     output = []
-    match_item = /([^\t]+)\t/
-    match_last_item = /([^\)]+)\)/
+
+    match_rev      = /([0-9a-f]+)/
+    match_filepath = /(\S+)/
+    match_author   = /(\S+(?: \S+)*)/
+    match_date     = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} [+-]\d{4})/
+    match_ln       = /(\d+)/
+
+    matcher = /#{match_rev}(?: #{match_filepath})?\s+\(#{match_author}\s+#{match_date}\s+#{match_ln}\) (.*)$/i
+
     input.split("\n").each do |line|
-      if /#{match_item}\(#{match_item}#{match_item}#{match_last_item}(.*)$/i.match(line)
-        rev,author,date,ln,text = $1,$2,$3,$4,$5
+      if matcher.match(line)
+        rev,filepath,author,date,ln,text = $1,$2,$3,$4,$5,$6
         nc = /^0+$/.match(rev)
         output << {
           :rev => nc ? "-current-" : rev,
+          :filepath => filepath,
           :author => nc ? "-none-" : author.strip,
           :date => nc ? "-pending-" : Time.parse(date),
           :ln => ln.to_i,
@@ -151,6 +144,8 @@ module Parsers
         current[:msg] = block.gsub(/^ {4}/, "")
       when /^diff /
         current[:diff] = parse_diff(block)
+      else
+        current[:filepath] = block.strip
       end
     end
     output

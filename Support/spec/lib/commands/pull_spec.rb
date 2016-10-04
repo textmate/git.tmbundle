@@ -12,7 +12,8 @@ describe Git do
   end
   
   describe "push from git 1.5.3.4" do
-    TEST_INPUT = <<EOF
+    before(:each) do
+      @process_io = StringIO.new <<-EOF
 Unpacking 6 objects...
  16% (1/6) done\r 33% (2/6) done\r 50% (3/6) done\r 66% (4/6) done\r 83% (5/6) done\r 100% (6/6) done\n
 * refs/remotes/origin/master: fast forward to branch 'master' of /Users/timcharper/projects/origin
@@ -30,8 +31,6 @@ If you often merge with the same branch, you may want to
 configure the following variables in your configuration
 file:
 EOF
-    before(:each) do
-      @process_io = StringIO.new(TEST_INPUT)
     end
   
     it "should call the status proc 6 times" do

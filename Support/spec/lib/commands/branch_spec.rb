@@ -4,7 +4,7 @@ describe SCM::Git::Branch do
   before(:each) do
     @git = Git.new
     Git.reset_mock!
-    @HEAD_file_path = @git.path_for(".git/HEAD")
+    @HEAD_file_path = "#{@git.git_dir}/HEAD"
   end
   
   include SpecHelpers

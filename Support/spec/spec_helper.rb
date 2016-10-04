@@ -83,8 +83,8 @@ class Git
     StringIO.new(command(*args))
   end
   
-  def git_dir(file_or_dir)
-    "/base/"
+  def git_dir(file_or_dir = paths.first)
+    "/base/.git"
   end
   
   def paths(*args)
@@ -104,7 +104,7 @@ end
 
 [:exit_show_html, :exit_discard, :exit_show_tool_tip].each do |exit_method|
   Object.send :define_method, exit_method do
-    $exit_status = exit_method
+    $exit_status = Object.const_get(exit_method.upcase)
   end
 end
 

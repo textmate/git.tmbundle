@@ -2,6 +2,8 @@
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
 
 class StashController < ApplicationController
+  include DiffHelper
+
   layout "application", :except => ["clear"]
   def show
     if git.stash.list.empty?

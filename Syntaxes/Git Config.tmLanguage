@@ -5,6 +5,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>.git/config</string>
+		<string>git/config</string>
 		<string>.gitconfig</string>
 		<string>etc/gitconfig</string>
 		<string>.gitmodules</string>
@@ -170,6 +171,12 @@
 			<string>meta.value-pair.section-item.git-config</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>match</key>
+					<string>\\[ntb"\\]</string>
+					<key>name</key>
+					<string>constant.character.escape.git-config</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#boolean</string>

@@ -1,4 +1,4 @@
-<div style='position:fixed; top:0px; background: #fff; width: 100%; '>
+<div style='position:fixed; top:0px; background: #fff; width: 100%; ' id="navigate-box">
   <div id='debug'></div>
   <div style='float:right; margin-right: 15px;'>
     <b>Commands</b>: <%= %w[next previous open branch tag].map { |word| "<strong>(#{word[0..0]})</strong>#{word[1..-1]}" } * ' / ' %>
@@ -15,7 +15,7 @@
       end
       
       le_str = [short_rev(le[:rev]), relative_date(le[:date]), le[:author], msg].compact.join(' - ')
-      [le_str, short_rev(le[:rev])]
+      [le_str, short_rev(le[:rev]), le[:filepath]]
     end
     
     select_box( "rev",
