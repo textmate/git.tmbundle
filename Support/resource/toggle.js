@@ -16,7 +16,7 @@ function toggle_diff(dom_id) {
   e = $(dom_id)
   if (! e.readAttribute("loaded")) {
     e.update(dispatch({controller: 'diff', action: 'diff', revision: e.readAttribute("rev"), git_path: e.readAttribute("git_path"), path: (e.readAttribute("path") || ""), layout: false}))
-    e.setAttribute("loaded");
+    e.setAttribute("loaded", "");
   }
   
   set_togglable_visibility( dom_id, ! e.visible() );
