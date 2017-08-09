@@ -104,7 +104,7 @@ end
 
 [:exit_show_html, :exit_discard, :exit_show_tool_tip].each do |exit_method|
   Object.send :define_method, exit_method do
-    $exit_status = Object.const_get(exit_method.upcase)
+    $exit_status = Object.const_get(exit_method.to_s.upcase)
   end
 end
 

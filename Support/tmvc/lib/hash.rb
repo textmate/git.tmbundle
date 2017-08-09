@@ -14,10 +14,12 @@ class Hash
       end
     end
   end
-  
-  alias reject_without_params reject
-  def reject(*keys, &block)
-    return reject_without_params(&block) if keys.empty?
-    reject_without_params { |key,value| keys.include?(key)}
+
+  unless method_defined?(:reject_without_params)
+    alias reject_without_params reject
+    def reject(*keys, &block)
+      return reject_without_params(&block) if keys.empty?
+      reject_without_params { |key,value| keys.include?(key)}
+    end
   end
 end
