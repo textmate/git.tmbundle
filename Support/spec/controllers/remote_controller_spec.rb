@@ -46,7 +46,7 @@ describe RemoteController do
       # Git.command_response[] 
       Git.command_response["log", "-p", "791a587..4bfc230", "."] = fixture_file("log_with_diffs.txt")
       Git.command_response["log", "-p", "dc29d3d..05f9ad9", "."] = fixture_file("log_with_diffs.txt")
-      Git.command_response["pull", "origin", "master"] = fixture_file("pull_1_5_4_3_output.txt")
+      Git.command_response["pull", "origin", "refs/heads/master"] = fixture_file("pull_1_5_4_3_output.txt")
     end
     
     it "should output log of changes pulled" do
