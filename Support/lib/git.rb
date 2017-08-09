@@ -309,7 +309,7 @@ module SCM
 
     def annotate(file_path, revision = nil)
       file = make_local_path(file_path)
-      args = []
+      args = ["--abbrev=7"]
       args += ["--follow", revision, "--"] unless revision.nil? || revision.empty?
       args << file
       output = command("blame", *args)
