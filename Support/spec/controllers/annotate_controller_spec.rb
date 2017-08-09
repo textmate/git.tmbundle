@@ -9,8 +9,8 @@ describe AnnotateController do
   describe "when annotating" do
     before(:all) do
       ENV["TM_SELECTION"] = "1"
-      Git.command_response["annotate", "file.rb"] = fixture_file("annotate.txt")
-      Git.command_response["log", "--date=default", "--format=medium", "file.rb"] = fixture_file("log_with_diffs.txt")
+      Git.command_response["blame", "file.rb"] = fixture_file("blame.txt")
+      Git.command_response["log", "--date=default", "--format=medium", "--follow", "--name-only", "file.rb"] = fixture_file("log_with_diffs.txt")
       @output = capture_output do 
         dispatch(:controller => "annotate", :file_path => "file.rb")
       end
