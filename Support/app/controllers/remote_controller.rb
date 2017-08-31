@@ -4,6 +4,9 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
 
 class RemoteController < ApplicationController
   ALL_REMOTES = "...all remotes..."
+  FORCE_PUSH_YES = 'Yes, force push'
+  FORCE_PUSH_NO = 'No, just push normally'
+  FORCE_PUSH_CANCEL = 'Cancel'
   
   include SubmoduleHelper::Update
   include SubmoduleHelper
@@ -80,6 +83,14 @@ class RemoteController < ApplicationController
       puts "You can't push the current branch while not being on a branch (and you are not on a branch).  Please switch to a branch, and try again."
       output_show_html and return
     end
+
+    case TextMate::UI.alert(:warning, "Force push this branch?", "Force pushing to #{branch.name} branch will OVERWRITE the remote branch, are you sure you want to continue?", FORCE_PUSH_YES, FORCE_PUSH_NO, FORCE_PUSH_CANCEL)
+    when FORCE_PUSH_CANCEL
+      puts '<h1>Push aborted</h1><p>That was a close one!</p>'
+      output_show_html and return
+    when FORCE_PUSH_NO
+      force = false
+    end if force
 
     title = "Push"
     title = "Force "+title if force
