@@ -11,7 +11,7 @@ module HtmlHelpers
     
 protected  
   def resource_url(filename)
-    "file://#{ENV['TM_BUNDLE_SUPPORT']}/resource/#{filename}"
+    "file://" + e_url("#{ENV['TM_BUNDLE_SUPPORT']}/resource/#{filename}")
   end
   
   def select_box(name, select_options = [], options = {})
