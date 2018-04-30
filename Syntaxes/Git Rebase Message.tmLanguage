@@ -44,7 +44,26 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(pick|p|reword|r|edit|e|squash|s|fixup|f|exec|x|drop|d)\s+([0-9a-f]+)\s+(.*)$</string>
+			<string>^\s*(pick|p|reword|r|edit|e|squash|s|fixup|f|drop|d)\s+([0-9a-f]+)\s+(.*)$</string>
+			<key>name</key>
+			<string>meta.commit-command.git-rebase</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.git-rebase</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>markup.raw.inline.git-rebase</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(exec|x)\s+(.*)$</string>
 			<key>name</key>
 			<string>meta.commit-command.git-rebase</string>
 		</dict>
