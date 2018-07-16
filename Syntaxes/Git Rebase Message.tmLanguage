@@ -58,8 +58,13 @@
 				</dict>
 				<key>2</key>
 				<dict>
-					<key>name</key>
-					<string>markup.raw.inline.git-rebase</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.shell</string>
+						</dict>
+					</array>
 				</dict>
 			</dict>
 			<key>match</key>
