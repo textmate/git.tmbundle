@@ -72,6 +72,20 @@
 			<key>name</key>
 			<string>meta.commit-command.git-rebase</string>
 		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.git-rebase</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(break|b)\s*$</string>
+			<key>name</key>
+			<string>meta.commit-command.git-rebase</string>
+		</dict>
 	</array>
 	<key>scopeName</key>
 	<string>text.git-rebase</string>
