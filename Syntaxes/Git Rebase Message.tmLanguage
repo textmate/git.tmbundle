@@ -82,7 +82,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*(break|b)\s+$</string>
+			<string>^\s*(break|b)\s*$</string>
 			<key>name</key>
 			<string>meta.commit-command.git-rebase</string>
 		</dict>
