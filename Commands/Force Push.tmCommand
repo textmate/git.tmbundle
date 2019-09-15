@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby18
+
+require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
+dispatch :controller =&gt; "remote", :action =&gt; "push", :force =&gt; true</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>inputFormat</key>
+	<string>text</string>
+	<key>name</key>
+	<string>Force Push</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
+	<key>scope</key>
+	<string>attr.scm.git</string>
+	<key>semanticClass</key>
+	<string>action.scm.push.force</string>
+	<key>uuid</key>
+	<string>95FA2D08-66F7-41CD-A7C5-6F240CA5ACAD</string>
+	<key>version</key>
+	<integer>2</integer>
+</dict>
+</plist>
