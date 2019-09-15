@@ -26,15 +26,19 @@ h2. Development
 
 h3. Running Specs
 
-The specs must be run with Ruby 1.8.7 (p358). Use your Ruby version manager of choice to install this version. Then, with this version activated (and @Support/@ as current directory), run @bundle install@ to install the appropriate versions of RSpec and hpricot.
+The specs must be run with Ruby 1.8.7 (p358). Use your Ruby version manager of choice to install this version. Then, with this version activated (and @Support/@ as current directory), run @gem install --file Gemfile@ to install the appropriate versions of RSpec and hpricot.
 
-When running the specs from the command line you need to set @TM_SPPORT_PATH@ explicitly. The following should work:
+When running the specs from the command line you need to set @TM_SUPPORT_PATH@ explicitly. The following should work:
 
-    export TM_SUPPORT_PATH=~/Library/Application\ Support/TextMate/Managed/Bundles/Bundle\ Support.tmbundle/Support/shared
+<code>
+export TM_SUPPORT_PATH=~/Library/Application\ Support/TextMate/Managed/Bundles/Bundle\ Support.tmbundle/Support/shared
+</code>
 
 To run the specs then use:
 
-    bundle exec spec spec/
+<code>
+spec spec/
+</code>
 
 h2. Who:
 
