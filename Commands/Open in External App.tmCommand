@@ -7,14 +7,14 @@
 	<key>command</key>
 	<string>#!/usr/bin/env ruby18
 require ENV['TM_BUNDLE_SUPPORT'] + '/environment.rb'
-dispatch(:controller =&gt; "misc", :action =&gt; "gitx")
+dispatch(:controller =&gt; "misc", :action =&gt; "external")
 </string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>name</key>
-	<string>Visualize History with GitX</string>
+	<string>Visualize History with External Git App</string>
 	<key>outputCaret</key>
 	<string>afterOutput</string>
 	<key>outputFormat</key>
@@ -26,7 +26,7 @@ dispatch(:controller =&gt; "misc", :action =&gt; "gitx")
 	<key>semanticClass</key>
 	<string>action.scm.other</string>
 	<key>uuid</key>
-	<string>1C12DE42-78A9-4DCA-BB55-2B8E6328C72D</string>
+	<string>547EFC07-D15D-4217-9695-9043232560FF</string>
 	<key>version</key>
 	<integer>2</integer>
 </dict>
